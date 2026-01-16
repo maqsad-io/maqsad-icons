@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* Global styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Custom utility classes */
+.icon-card {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.icon-card:hover {
+  @apply shadow-md;
+  transform: translateY(-2px);
+}
+
+/* Code block styling */
+code {
+  @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ced4da;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #adb5bd;
+}
