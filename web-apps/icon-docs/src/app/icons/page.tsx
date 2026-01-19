@@ -39,10 +39,10 @@ export default function AllIconsPage() {
   const totalIcons = SYSTEM_ICONS.length + ILLUSTRATION_ICONS.length;
   const filteredTotal = filteredSystemIcons.length + filteredIllustrationIcons.length;
 
-  const renderIcon = (name: string, type: IconType) => (size: number, variant?: string) => {
+  const renderIcon = (name: string, type: IconType) => (size: number, variant?: string, stroke?: string, fill?: string) => {
     if (type === "system") {
       const IconComponent = SystemIconsMap[name];
-      return IconComponent ? <IconComponent size={size} /> : null;
+      return IconComponent ? <IconComponent size={size} stroke={stroke} fill={fill} /> : null;
     } else {
       const IconComponent = IllustrationIconsMap[name];
       return IconComponent ? <IconComponent size={size} variant={variant || "primary"} /> : null;

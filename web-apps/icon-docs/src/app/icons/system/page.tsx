@@ -20,7 +20,7 @@ import { IconSearchBar } from "@/components/features/IconSearchBar";
 import { SYSTEM_ICONS } from "@/data/icons";
 
 // Type for the icons module
-type IconComponent = React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
+type IconComponent = React.ComponentType<{ size?: number; stroke?: string; fill?: string; strokeWidth?: number }>;
 const IconsMap = SystemIcons as Record<string, IconComponent>;
 
 export default function SystemIconsPage() {
@@ -34,9 +34,11 @@ export default function SystemIconsPage() {
 
   const iconSize = parseInt(sizeFilter, 10);
 
-  const renderIcon = (name: string) => (size: number) => {
+  const createRenderIcon = (name: string) => {
     const IconComponent = IconsMap[name];
-    return IconComponent ? <IconComponent size={size} /> : null;
+    return function renderIconForModal(size: number, _variant?: string, stroke?: string, fill?: string, strokeWidth?: number) {
+      return IconComponent ? <IconComponent size={size} stroke={stroke} fill={fill} strokeWidth={strokeWidth} /> : null;
+    };
   };
 
   return (
@@ -122,7 +124,7 @@ export default function SystemIconsPage() {
           onClose={() => setSelectedIcon(null)}
           name={selectedIcon}
           type="system"
-          renderIcon={renderIcon(selectedIcon)}
+          renderIcon={createRenderIcon(selectedIcon)}
         />
       )}
     </Container>
