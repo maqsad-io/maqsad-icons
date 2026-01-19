@@ -71,7 +71,8 @@ export interface FilledColors {
  */
 export function createSystemIcon(
   displayName: string,
-  path: React.ReactNode
+  path: React.ReactNode,
+  svgStyle: React.CSSProperties | null = null
 ) {
   const Icon = forwardRef<SVGSVGElement, SystemIconProps>(
     (
@@ -82,6 +83,7 @@ export function createSystemIcon(
         fill,
         strokeWidth = 2,
         className,
+        style,
         ...props
       },
       ref: Ref<SVGSVGElement>
@@ -104,6 +106,7 @@ export function createSystemIcon(
           strokeLinecap="round"
           strokeLinejoin="round"
           className={className}
+          style={{ ...svgStyle, ...style }}
           {...props}
         >
           {path}
@@ -128,7 +131,8 @@ export function createIllustrationIcon(
     light: React.ReactNode;
     filled: (colors: FilledColors) => React.ReactNode;
   },
-  viewBox: string = '0 0 48 48'
+  viewBox: string = '0 0 48 48',
+  svgStyle: React.CSSProperties | null = null
 ) {
   const Icon = forwardRef<SVGSVGElement, IllustrationIconProps>(
     (
@@ -138,6 +142,7 @@ export function createIllustrationIcon(
         primaryColor = '#3B82F6',
         accentColor = '#F59E0B',
         className,
+        style,
         ...props
       },
       ref: Ref<SVGSVGElement>
@@ -172,6 +177,7 @@ export function createIllustrationIcon(
           height={height}
           viewBox={viewBox}
           className={className}
+          style={{ ...svgStyle, ...style }}
           {...props}
         >
           {getContent()}

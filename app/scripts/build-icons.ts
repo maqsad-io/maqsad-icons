@@ -41,7 +41,7 @@ const svgoConfig: Config = {
     {
       name: 'removeAttrs',
       params: {
-        attrs: ['class', 'style', 'data-name'],
+        attrs: ['class', 'data-name'],
       },
     },
     {
@@ -64,17 +64,72 @@ function toPascalCase(str: string): string {
 }
 
 /**
+ * Convert a CSS style string to a React style object string
+ */
+function cssStyleToReactStyle(styleStr: string): string {
+  const styleObj: Record<string, string> = {};
+  styleStr.split(';').forEach(rule => {
+    const colonIndex = rule.indexOf(':');
+    if (colonIndex > -1) {
+      const property = rule.substring(0, colonIndex).trim();
+      const value = rule.substring(colonIndex + 1).trim();
+      if (property && value) {
+        // Convert CSS property to camelCase (e.g., border-radius -> borderRadius, mask-type -> maskType)
+        const camelProperty = property.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+        styleObj[camelProperty] = value;
+      }
+    }
+  });
+  return JSON.stringify(styleObj);
+}
+
+/**
+ * Convert inline style attributes in SVG content to React style objects
+ */
+function convertInlineStylesToReact(content: string): string {
+  // Match style="..." on any element and convert to style={{...}}
+  return content.replace(/style="([^"]+)"/g, (_, styleStr) => {
+    const reactStyle = cssStyleToReactStyle(styleStr);
+    return `style={${reactStyle}}`;
+  });
+}
+
+/**
  * Extract SVG content (everything inside the <svg> tag)
  */
-function extractSvgContent(svgString: string): { content: string; viewBox: string } {
+function extractSvgContent(svgString: string): { content: string; viewBox: string; svgStyle: Record<string, string> | null } {
   const viewBoxMatch = svgString.match(/viewBox="([^"]+)"/);
   const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
 
+  // Extract style attribute from root SVG element
+  const styleMatch = svgString.match(/<svg[^>]*style="([^"]+)"/);
+  let svgStyle: Record<string, string> | null = null;
+  if (styleMatch) {
+    svgStyle = {};
+    const styleStr = styleMatch[1];
+    // Parse CSS style string into object (e.g., "border-radius: 50%; overflow: hidden;")
+    styleStr.split(';').forEach(rule => {
+      const colonIndex = rule.indexOf(':');
+      if (colonIndex > -1) {
+        const property = rule.substring(0, colonIndex).trim();
+        const value = rule.substring(colonIndex + 1).trim();
+        if (property && value) {
+          // Convert CSS property to camelCase (e.g., border-radius -> borderRadius)
+          const camelProperty = property.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+          svgStyle![camelProperty] = value;
+        }
+      }
+    });
+  }
+
   // Extract content between <svg> tags
   const contentMatch = svgString.match(/<svg[^>]*>([\s\S]*?)<\/svg>/);
-  const content = contentMatch ? contentMatch[1].trim() : '';
+  let content = contentMatch ? contentMatch[1].trim() : '';
 
-  return { content, viewBox };
+  // Convert any inline styles in the content to React style objects
+  content = convertInlineStylesToReact(content);
+
+  return { content, viewBox, svgStyle };
 }
 
 /**
@@ -164,7 +219,7 @@ async function processSystemIcons(): Promise<void> {
   // Create output directory
   fs.mkdirSync(outputDir, { recursive: true });
 
-  const icons: Map<string, { content: string; viewBox: string }> = new Map();
+  const icons: Map<string, { content: string; viewBox: string; svgStyle: Record<string, string> | null }> = new Map();
 
   // Read icons from stroke and filled directories (prefer stroke, fallback to filled)
   const iconTypes = ['stroke', 'filled'];
@@ -184,10 +239,10 @@ async function processSystemIcons(): Promise<void> {
 
       // Optimize SVG
       const optimized = optimize(svgContent, svgoConfig);
-      const { content, viewBox } = extractSvgContent(optimized.data);
+      const { content, viewBox, svgStyle } = extractSvgContent(optimized.data);
       const jsxContent = svgToJsx(content);
 
-      icons.set(iconName, { content: jsxContent, viewBox });
+      icons.set(iconName, { content: jsxContent, viewBox, svgStyle });
     }
   }
 
@@ -208,13 +263,15 @@ export {};
 `;
   }
 
-  for (const [name, { content }] of icons) {
+  for (const [name, { content, svgStyle }] of icons) {
     const componentName = `Icon${toPascalCase(name)}`;
     const hasMultipleElements = content.includes('><');
+    const svgStyleArg = svgStyle ? JSON.stringify(svgStyle) : 'null';
 
     output += `export const ${componentName} = createSystemIcon(
   '${componentName}',
-  ${hasMultipleElements ? `<>${content}</>` : content}
+  ${hasMultipleElements ? `<>${content}</>` : content},
+  ${svgStyleArg}
 );
 
 `;
@@ -255,7 +312,7 @@ async function processIllustrationIcons(): Promise<void> {
   const icons: Map<
     string,
     {
-      variants: Partial<Record<(typeof variants)[number], { content: string; viewBox: string }>>;
+      variants: Partial<Record<(typeof variants)[number], { content: string; viewBox: string; svgStyle: Record<string, string> | null }>>;
     }
   > = new Map();
 
@@ -275,14 +332,14 @@ async function processIllustrationIcons(): Promise<void> {
 
       // Optimize SVG
       const optimized = optimize(svgContent, svgoConfig);
-      const { content, viewBox } = extractSvgContent(optimized.data);
+      const { content, viewBox, svgStyle } = extractSvgContent(optimized.data);
       const jsxContent = svgToJsx(content);
 
       if (!icons.has(iconName)) {
         icons.set(iconName, { variants: {} });
       }
 
-      icons.get(iconName)!.variants[variant] = { content: jsxContent, viewBox };
+      icons.get(iconName)!.variants[variant] = { content: jsxContent, viewBox, svgStyle };
     }
   }
 
@@ -306,6 +363,8 @@ export {};
   for (const [name, { variants: iconVariants }] of icons) {
     const componentName = `Illustration${toPascalCase(name)}`;
     const viewBox = iconVariants.primary?.viewBox || '0 0 48 48';
+    const svgStyle = iconVariants.primary?.svgStyle;
+    const svgStyleArg = svgStyle ? JSON.stringify(svgStyle) : 'null';
 
     output += `export const ${componentName} = createIllustrationIcon(
   '${componentName}',
@@ -339,7 +398,8 @@ export {};
 `;
 
     output += `  },
-  '${viewBox}'
+  '${viewBox}',
+  ${svgStyleArg}
 );
 
 `;
