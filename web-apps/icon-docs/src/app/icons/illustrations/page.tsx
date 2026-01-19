@@ -15,6 +15,7 @@ import { useState, useMemo } from "react";
 import * as IllustrationIcons from "@maqsad/icons/illustrations";
 
 import { IconCard } from "@/components/features/IconCard";
+import { IconDetailModal } from "@/components/features/IconDetailModal";
 import { IconSearchBar } from "@/components/features/IconSearchBar";
 import { ILLUSTRATION_ICONS, ILLUSTRATION_VARIANTS, type IllustrationVariant } from "@/data/icons";
 
@@ -31,12 +32,18 @@ export default function IllustrationIconsPage() {
   const [search, setSearch] = useState("");
   const [variant, setVariant] = useState<IllustrationVariant>("primary");
   const [sizeFilter, setSizeFilter] = useState("48");
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
 
   const filteredIcons = useMemo(() => {
     return ILLUSTRATION_ICONS.filter((name) => name.toLowerCase().includes(search.toLowerCase()));
   }, [search]);
 
   const iconSize = parseInt(sizeFilter, 10);
+
+  const renderIcon = (name: string) => (size: number, iconVariant?: string) => {
+    const IconComponent = IconsMap[name];
+    return IconComponent ? <IconComponent size={size} variant={(iconVariant || variant) as IllustrationVariant} /> : null;
+  };
 
   return (
     <Container size="lg" py="xl">
@@ -151,6 +158,7 @@ export default function IllustrationIconsPage() {
                 name={name}
                 icon={IconComponent ? <IconComponent size={iconSize} variant={variant} /> : null}
                 copyText={`import { ${name} } from '@maqsad/icons/illustrations';`}
+                onClick={() => setSelectedIcon(name)}
               />
             );
           })}
@@ -159,6 +167,17 @@ export default function IllustrationIconsPage() {
         <Card p="xl" withBorder className="text-center">
           <Text c="dimmed">No icons found matching &quot;{search}&quot;</Text>
         </Card>
+      )}
+
+      {/* Icon Detail Modal */}
+      {selectedIcon && (
+        <IconDetailModal
+          opened={!!selectedIcon}
+          onClose={() => setSelectedIcon(null)}
+          name={selectedIcon}
+          type="illustration"
+          renderIcon={renderIcon(selectedIcon)}
+        />
       )}
     </Container>
   );

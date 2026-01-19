@@ -8,6 +8,7 @@ import * as SystemIcons from "@maqsad/icons/system";
 import * as IllustrationIcons from "@maqsad/icons/illustrations";
 
 import { IconCard } from "@/components/features/IconCard";
+import { IconDetailModal, type IconType } from "@/components/features/IconDetailModal";
 import { IconSearchBar } from "@/components/features/IconSearchBar";
 import { SYSTEM_ICONS, ILLUSTRATION_ICONS } from "@/data/icons";
 
@@ -21,6 +22,7 @@ const IllustrationIconsMap = IllustrationIcons as Record<string, IllustrationCom
 export default function AllIconsPage() {
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState<string | null>("all");
+  const [selectedIcon, setSelectedIcon] = useState<{ name: string; type: IconType } | null>(null);
 
   const filteredSystemIcons = useMemo(() => {
     return SYSTEM_ICONS.filter((name) =>
@@ -36,6 +38,16 @@ export default function AllIconsPage() {
 
   const totalIcons = SYSTEM_ICONS.length + ILLUSTRATION_ICONS.length;
   const filteredTotal = filteredSystemIcons.length + filteredIllustrationIcons.length;
+
+  const renderIcon = (name: string, type: IconType) => (size: number, variant?: string) => {
+    if (type === "system") {
+      const IconComponent = SystemIconsMap[name];
+      return IconComponent ? <IconComponent size={size} /> : null;
+    } else {
+      const IconComponent = IllustrationIconsMap[name];
+      return IconComponent ? <IconComponent size={size} variant={variant || "primary"} /> : null;
+    }
+  };
 
   return (
     <Container size="lg" py="xl">
@@ -94,6 +106,7 @@ export default function AllIconsPage() {
                       name={name}
                       icon={IconComponent ? <IconComponent size={24} /> : null}
                       copyText={`import { ${name} } from '@maqsad/icons/system';`}
+                      onClick={() => setSelectedIcon({ name, type: "system" })}
                     />
                   );
                 })}
@@ -134,6 +147,7 @@ export default function AllIconsPage() {
                       name={name}
                       icon={IconComponent ? <IconComponent size={48} /> : null}
                       copyText={`import { ${name} } from '@maqsad/icons/illustrations';`}
+                      onClick={() => setSelectedIcon({ name, type: "illustration" })}
                     />
                   );
                 })}
@@ -159,6 +173,7 @@ export default function AllIconsPage() {
                     name={name}
                     icon={IconComponent ? <IconComponent size={24} /> : null}
                     copyText={`import { ${name} } from '@maqsad/icons/system';`}
+                    onClick={() => setSelectedIcon({ name, type: "system" })}
                   />
                 );
               })}
@@ -181,6 +196,7 @@ export default function AllIconsPage() {
                     name={name}
                     icon={IconComponent ? <IconComponent size={48} /> : null}
                     copyText={`import { ${name} } from '@maqsad/icons/illustrations';`}
+                    onClick={() => setSelectedIcon({ name, type: "illustration" })}
                   />
                 );
               })}
@@ -192,6 +208,17 @@ export default function AllIconsPage() {
           )}
         </Tabs.Panel>
       </Tabs>
+
+      {/* Icon Detail Modal */}
+      {selectedIcon && (
+        <IconDetailModal
+          opened={!!selectedIcon}
+          onClose={() => setSelectedIcon(null)}
+          name={selectedIcon.name}
+          type={selectedIcon.type}
+          renderIcon={renderIcon(selectedIcon.name, selectedIcon.type)}
+        />
+      )}
     </Container>
   );
 }

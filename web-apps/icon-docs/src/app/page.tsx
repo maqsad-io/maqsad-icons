@@ -40,8 +40,8 @@ export default function HomePage() {
     <Container size="lg" py="xl">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <Badge size="lg" variant="light" mb="md">
-          v{AppMeta.version}
+        <Badge size="lg" variant="light" mb="md" style={{ textTransform: "none" }}>
+          v{AppMeta.dependencies["@maqsad/icons"].replace(/[^0-9.]/g, "")}
         </Badge>
         <Title order={1} className="mb-4">
           Maqsad Icons

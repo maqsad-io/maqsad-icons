@@ -15,6 +15,7 @@ import { useState, useMemo } from "react";
 import * as SystemIcons from "@maqsad/icons/system";
 
 import { IconCard } from "@/components/features/IconCard";
+import { IconDetailModal } from "@/components/features/IconDetailModal";
 import { IconSearchBar } from "@/components/features/IconSearchBar";
 import { SYSTEM_ICONS } from "@/data/icons";
 
@@ -25,12 +26,18 @@ const IconsMap = SystemIcons as Record<string, IconComponent>;
 export default function SystemIconsPage() {
   const [search, setSearch] = useState("");
   const [sizeFilter, setSizeFilter] = useState("24");
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
 
   const filteredIcons = useMemo(() => {
     return SYSTEM_ICONS.filter((name) => name.toLowerCase().includes(search.toLowerCase()));
   }, [search]);
 
   const iconSize = parseInt(sizeFilter, 10);
+
+  const renderIcon = (name: string) => (size: number) => {
+    const IconComponent = IconsMap[name];
+    return IconComponent ? <IconComponent size={size} /> : null;
+  };
 
   return (
     <Container size="lg" py="xl">
@@ -97,6 +104,7 @@ export default function SystemIconsPage() {
                 name={name}
                 icon={IconComponent ? <IconComponent size={iconSize} /> : null}
                 copyText={`import { ${name} } from '@maqsad/icons/system';`}
+                onClick={() => setSelectedIcon(name)}
               />
             );
           })}
@@ -105,6 +113,17 @@ export default function SystemIconsPage() {
         <Card p="xl" withBorder className="text-center">
           <Text c="dimmed">No icons found matching &quot;{search}&quot;</Text>
         </Card>
+      )}
+
+      {/* Icon Detail Modal */}
+      {selectedIcon && (
+        <IconDetailModal
+          opened={!!selectedIcon}
+          onClose={() => setSelectedIcon(null)}
+          name={selectedIcon}
+          type="system"
+          renderIcon={renderIcon(selectedIcon)}
+        />
       )}
     </Container>
   );

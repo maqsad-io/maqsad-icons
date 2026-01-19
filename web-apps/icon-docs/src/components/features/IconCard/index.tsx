@@ -8,14 +8,23 @@ interface IconCardProps {
   name: string;
   icon: ReactNode;
   copyText?: string;
+  onClick?: () => void;
 }
 
-export function IconCard({ name, icon, copyText }: IconCardProps) {
+export function IconCard({ name, icon, copyText, onClick }: IconCardProps) {
   const importText = copyText || `import { ${name} } from '@maqsad/icons';`;
 
   return (
     <Tooltip label={name} withArrow position="top" openDelay={300}>
-      <Card shadow="sm" padding="md" radius="md" withBorder className="icon-card">
+      <Card
+        shadow="sm"
+        padding="md"
+        radius="md"
+        withBorder
+        className="icon-card"
+        onClick={onClick}
+        style={{ cursor: onClick ? "pointer" : "default" }}
+      >
         <div className="flex flex-col items-center gap-3">
           <div
             className="w-full flex items-center justify-center bg-gray-50 rounded-md overflow-hidden"
