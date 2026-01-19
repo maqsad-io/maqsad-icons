@@ -7,7 +7,8 @@ export const DEFAULT_COLORS = {
   /** Default stroke color for system icons */
   systemStroke: '#646466',
   /** Default fill color for system icons (none = transparent) */
-  systemFill: '#F2AE1C',
+  // systemFill: '#F2AE1C',
+  systemFill: 'none',
   /** Default primary color for filled illustration variants */
   illustrationPrimary: '#3B82F6',
   /** Default accent color for filled illustration variants */
