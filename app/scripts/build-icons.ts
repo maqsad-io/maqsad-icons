@@ -95,6 +95,40 @@ function convertInlineStylesToReact(content: string): string {
 }
 
 /**
+ * Stroke colors that should be removed from system icons (they inherit from SVG element)
+ * These are common gray/neutral colors used for strokes that should be themeable
+ */
+const SYSTEM_ICON_STROKE_COLORS_TO_REMOVE = [
+  // Grays used in system icons
+  '#646466', '#B6B6B6', '#b6b6b6', '#000', '#000000', '#333', '#333333',
+  '#666', '#666666', '#999', '#999999', '#ccc', '#cccccc',
+  // Common stroke colors
+  'black', 'gray', 'grey',
+];
+
+/**
+ * Replace hardcoded stroke colors in system icons so they inherit from the SVG element
+ * Fill colors are preserved as-is to maintain individual icon appearance (e.g., #F2AE1C)
+ */
+function replaceSystemIconColors(content: string): string {
+  let result = content;
+
+  for (const color of SYSTEM_ICON_STROKE_COLORS_TO_REMOVE) {
+    // Replace stroke="color" with nothing (inherit from SVG element)
+    const strokeRegex = new RegExp(`stroke="${color}"`, 'gi');
+    result = result.replace(strokeRegex, '');
+  }
+
+  // Clean up any double spaces left by removed attributes
+  result = result.replace(/\s+/g, ' ');
+  // Clean up space before closing bracket
+  result = result.replace(/\s+>/g, '>');
+  result = result.replace(/\s+\/>/g, ' />');
+
+  return result;
+}
+
+/**
  * Extract SVG content (everything inside the <svg> tag)
  */
 function extractSvgContent(svgString: string): { content: string; viewBox: string; svgStyle: Record<string, string> | null } {
@@ -240,7 +274,9 @@ async function processSystemIcons(): Promise<void> {
       // Optimize SVG
       const optimized = optimize(svgContent, svgoConfig);
       const { content, viewBox, svgStyle } = extractSvgContent(optimized.data);
-      const jsxContent = svgToJsx(content);
+      // Replace hardcoded colors with currentColor for system icons
+      const colorReplacedContent = replaceSystemIconColors(content);
+      const jsxContent = svgToJsx(colorReplacedContent);
 
       icons.set(iconName, { content: jsxContent, viewBox, svgStyle });
     }

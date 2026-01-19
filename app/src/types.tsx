@@ -1,6 +1,20 @@
 import { forwardRef, type SVGProps, type Ref } from 'react';
 
 /**
+ * Default colors for icons
+ */
+export const DEFAULT_COLORS = {
+  /** Default stroke color for system icons */
+  systemStroke: '#646466',
+  /** Default fill color for system icons (none = transparent) */
+  systemFill: 'none',
+  /** Default primary color for filled illustration variants */
+  illustrationPrimary: '#3B82F6',
+  /** Default accent color for filled illustration variants */
+  illustrationAccent: '#F59E0B',
+} as const;
+
+/**
  * Props for system icons
  */
 export interface SystemIconProps extends Omit<SVGProps<SVGSVGElement>, 'ref'> {
@@ -88,10 +102,10 @@ export function createSystemIcon(
       },
       ref: Ref<SVGSVGElement>
     ) => {
-      // stroke prop takes precedence, then color, then default to currentColor
-      const strokeColor = stroke ?? color ?? 'currentColor';
-      // fill prop takes precedence, then default to none
-      const fillColor = fill ?? 'none';
+      // stroke prop takes precedence, then color, then default
+      const strokeColor = stroke ?? color ?? DEFAULT_COLORS.systemStroke;
+      // fill prop takes precedence, then default
+      const fillColor = fill ?? DEFAULT_COLORS.systemFill;
 
       return (
         <svg
@@ -139,8 +153,8 @@ export function createIllustrationIcon(
       {
         variant = 'primary',
         size = 48,
-        primaryColor = '#3B82F6',
-        accentColor = '#F59E0B',
+        primaryColor = DEFAULT_COLORS.illustrationPrimary,
+        accentColor = DEFAULT_COLORS.illustrationAccent,
         className,
         style,
         ...props
