@@ -107,8 +107,27 @@ const SYSTEM_ICON_STROKE_COLORS_TO_REMOVE = [
 ];
 
 /**
- * Replace hardcoded stroke colors in system icons so they inherit from the SVG element
- * Fill colors are preserved as-is to maintain individual icon appearance (e.g., #F2AE1C)
+ * Fill colors that should be removed from system icons (they inherit from SVG element)
+ * These are colored fills that users would want to customize
+ * White fills are preserved as they're typically used for cutouts/details
+ */
+const SYSTEM_ICON_FILL_COLORS_TO_REMOVE = [
+  // Grays
+  '#646466', '#B6B6B6', '#b6b6b6', '#000', '#000000', '#333', '#333333',
+  '#666', '#666666', '#999', '#999999', '#ccc', '#cccccc',
+  // Greens (WhatsApp, check icons)
+  '#23C063', '#23c063', '#4CAF50', '#4caf50', '#8FBC8F', '#8fbc8f', '#93C47D', '#93c47d',
+  // Blues
+  '#3B82F6', '#3b82f6', '#2196F3', '#2196f3', '#5F85BC', '#5f85bc', '#6082B6', '#6082b6',
+  // Reds
+  '#F44336', '#f44336', '#E53935', '#e53935', '#EF5350', '#ef5350', '#F2AE1C', '#f2ae1c',
+  // Common named colors
+  'black', 'gray', 'grey', 'green', 'blue', 'red',
+];
+
+/**
+ * Replace hardcoded stroke and fill colors in system icons so they inherit from the SVG element
+ * White fills are preserved as they're typically used for details/cutouts
  */
 function replaceSystemIconColors(content: string): string {
   let result = content;
@@ -117,6 +136,13 @@ function replaceSystemIconColors(content: string): string {
     // Replace stroke="color" with nothing (inherit from SVG element)
     const strokeRegex = new RegExp(`stroke="${color}"`, 'gi');
     result = result.replace(strokeRegex, '');
+  }
+
+  for (const color of SYSTEM_ICON_FILL_COLORS_TO_REMOVE) {
+    // Replace fill="color" with nothing (inherit from SVG element)
+    // But NOT inside <defs>, <clipPath>, or <mask> elements where white/colors are structural
+    const fillRegex = new RegExp(`fill="${color}"`, 'gi');
+    result = result.replace(fillRegex, '');
   }
 
   // Clean up any double spaces left by removed attributes
