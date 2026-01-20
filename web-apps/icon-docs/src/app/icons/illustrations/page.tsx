@@ -40,7 +40,7 @@ export default function IllustrationIconsPage() {
 
   const iconSize = parseInt(sizeFilter, 10);
 
-  const renderIcon = (name: string) => (size: number, iconVariant?: string) => {
+  const renderIcon = (name: string) => (size: number, iconVariant?: string, stroke?: string, fill?: string, strokeWidth?: number) => {
     const IconComponent = IconsMap[name];
     return IconComponent ? <IconComponent size={size} variant={(iconVariant || variant) as IllustrationVariant} /> : null;
   };
