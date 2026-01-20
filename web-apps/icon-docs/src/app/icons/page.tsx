@@ -11,10 +11,11 @@ import { IconCard } from "@/components/features/IconCard";
 import { IconDetailModal, type IconType } from "@/components/features/IconDetailModal";
 import { IconSearchBar } from "@/components/features/IconSearchBar";
 import { SYSTEM_ICONS, ILLUSTRATION_ICONS } from "@/data/icons";
+import type { SystemIconProps, IllustrationIconProps, IllustrationVariant } from "@maqsad/icons";
 
 // Type definitions
-type SystemIconComponent = React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
-type IllustrationComponent = React.ComponentType<{ size?: number; variant?: string }>;
+type SystemIconComponent = React.ComponentType<SystemIconProps>;
+type IllustrationComponent = React.ComponentType<IllustrationIconProps>;
 
 const SystemIconsMap = SystemIcons as Record<string, SystemIconComponent>;
 const IllustrationIconsMap = IllustrationIcons as Record<string, IllustrationComponent>;
@@ -39,14 +40,16 @@ export default function AllIconsPage() {
   const totalIcons = SYSTEM_ICONS.length + ILLUSTRATION_ICONS.length;
   const filteredTotal = filteredSystemIcons.length + filteredIllustrationIcons.length;
 
-  const renderIcon = (name: string, type: IconType) => (size: number, variant?: string, stroke?: string, fill?: string) => {
-    if (type === "system") {
-      const IconComponent = SystemIconsMap[name];
-      return IconComponent ? <IconComponent size={size} stroke={stroke} fill={fill} /> : null;
-    } else {
-      const IconComponent = IllustrationIconsMap[name];
-      return IconComponent ? <IconComponent size={size} variant={variant || "primary"} /> : null;
-    }
+  const renderIcon = (name: string, type: IconType) => {
+    return function IconRenderer(size: number, variant?: IllustrationVariant, stroke?: string, fill?: string) {
+      if (type === "system") {
+        const IconComponent = SystemIconsMap[name];
+        return IconComponent ? <IconComponent size={size} stroke={stroke} fill={fill} /> : null;
+      } else {
+        const IconComponent = IllustrationIconsMap[name];
+        return IconComponent ? <IconComponent size={size} variant={variant || "primary"} /> : null;
+      }
+    };
   };
 
   return (
