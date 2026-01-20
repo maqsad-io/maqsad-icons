@@ -135,7 +135,7 @@ function replaceSystemIconColors(content: string): string {
 
   // Remove ALL stroke color attributes (they should inherit from SVG)
   result = result.replace(/\sstroke="[^"]*"/g, '');
-  
+
   // Remove fill attributes EXCEPT:
   // - fill="#fff" or fill="white" inside clipPath/defs (structural elements)
   // - fill="none" (transparent)
@@ -144,16 +144,16 @@ function replaceSystemIconColors(content: string): string {
     const before = result.substring(Math.max(0, offset - 200), offset);
     const isInClipPath = before.includes('<clipPath') && !before.includes('</clipPath>');
     const isInDefs = before.includes('<defs') && !before.includes('</defs>');
-    
+
     // Check if it's a white fill (preserve in structural elements)
-    const isWhiteFill = match.includes('#fff') || match.includes('#FFF') || 
-                        match.includes('#ffffff') || match.includes('#FFFFFF') || 
-                        match.includes('white');
-    
+    const isWhiteFill = match.includes('#fff') || match.includes('#FFF') ||
+      match.includes('#ffffff') || match.includes('#FFFFFF') ||
+      match.includes('white');
+
     if ((isInClipPath || isInDefs) && isWhiteFill) {
       return match; // Preserve white fills in clipPath/defs
     }
-    
+
     return ''; // Remove all other fills
   });
 
