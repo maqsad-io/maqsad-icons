@@ -126,36 +126,19 @@ const SYSTEM_ICON_FILL_COLORS_TO_REMOVE = [
 ];
 
 /**
- * Replace hardcoded stroke and fill colors in system icons so they inherit from the SVG element
- * Only preserves: fill="#fff" inside <defs>/<clipPath> (structural), fill="none" (transparent)
+ * Replace hardcoded stroke colors in system icons so they inherit from the SVG element
+ * Fill colors are PRESERVED - they are part of the icon design
  * Also removes strokeWidth attributes so they can be controlled via props
  */
 function replaceSystemIconColors(content: string): string {
   let result = content;
 
-  // Remove ALL stroke color attributes (they should inherit from SVG)
-  result = result.replace(/\sstroke="[^"]*"/g, '');
-
-  // Remove fill attributes EXCEPT:
-  // - fill="#fff" or fill="white" inside clipPath/defs (structural elements)
-  // - fill="none" (transparent)
-  result = result.replace(/\sfill="(?!none")[^"]*"/g, (match, offset) => {
-    // Check if this is inside a clipPath or defs (preserve white fills there)
-    const before = result.substring(Math.max(0, offset - 200), offset);
-    const isInClipPath = before.includes('<clipPath') && !before.includes('</clipPath>');
-    const isInDefs = before.includes('<defs') && !before.includes('</defs>');
-
-    // Check if it's a white fill (preserve in structural elements)
-    const isWhiteFill = match.includes('#fff') || match.includes('#FFF') ||
-      match.includes('#ffffff') || match.includes('#FFFFFF') ||
-      match.includes('white');
-
-    if ((isInClipPath || isInDefs) && isWhiteFill) {
-      return match; // Preserve white fills in clipPath/defs
-    }
-
-    return ''; // Remove all other fills
-  });
+  // Remove stroke color attributes (they should inherit from SVG)
+  // Only remove common themeable colors, preserve white strokes
+  for (const color of SYSTEM_ICON_STROKE_COLORS_TO_REMOVE) {
+    const strokeRegex = new RegExp(`\\sstroke="${color}"`, 'gi');
+    result = result.replace(strokeRegex, '');
+  }
 
   // Remove strokeWidth attributes so they inherit from the parent SVG element
   result = result.replace(/\sstrokeWidth="[^"]*"/g, '');

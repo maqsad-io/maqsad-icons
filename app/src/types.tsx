@@ -96,7 +96,7 @@ export function createSystemIcon(
         color,
         stroke,
         fill,
-        strokeWidth = 2,
+        strokeWidth = 1,
         className,
         style,
         ...props
