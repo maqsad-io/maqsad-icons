@@ -128,6 +128,7 @@ const SYSTEM_ICON_FILL_COLORS_TO_REMOVE = [
 /**
  * Replace hardcoded stroke and fill colors in system icons so they inherit from the SVG element
  * White fills are preserved as they're typically used for details/cutouts
+ * Also removes strokeWidth attributes so they can be controlled via props
  */
 function replaceSystemIconColors(content: string): string {
   let result = content;
@@ -144,6 +145,11 @@ function replaceSystemIconColors(content: string): string {
     const fillRegex = new RegExp(`fill="${color}"`, 'gi');
     result = result.replace(fillRegex, '');
   }
+
+  // Remove strokeWidth attributes so they inherit from the parent SVG element
+  // This allows the strokeWidth prop to work
+  result = result.replace(/strokeWidth="[^"]*"/g, '');
+  result = result.replace(/stroke-width="[^"]*"/g, '');
 
   // Clean up any double spaces left by removed attributes
   result = result.replace(/\s+/g, ' ');
