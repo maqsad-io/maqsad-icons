@@ -12,9 +12,14 @@ import {
   SegmentedControl,
   Table,
   Divider,
+  ColorSwatch,
+  Box,
+  Slider,
+  ColorPicker,
+  Popover,
 } from "@mantine/core";
 import { CodeHighlight } from "@mantine/code-highlight";
-import { IconCheck, IconCopy } from "@tabler/icons-react";
+import { IconCheck, IconCopy, IconPalette } from "@tabler/icons-react";
 import { useState, type ReactNode } from "react";
 import { ILLUSTRATION_VARIANTS, type IllustrationVariant } from "@/data/icons";
 
@@ -25,13 +30,25 @@ interface IconDetailModalProps {
   onClose: () => void;
   name: string;
   type: IconType;
-  renderIcon: (size: number, variant?: IllustrationVariant) => ReactNode;
+  renderIcon: (size: number, variant?: IllustrationVariant, stroke?: string, fill?: string, strokeWidth?: number) => ReactNode;
 }
+
+const COLOR_OPTIONS = [
+  { color: "#646466", label: "Default Gray" },
+  { color: "#000000", label: "Black" },
+  { color: "#3B82F6", label: "Blue" },
+  { color: "#EF4444", label: "Red" },
+  { color: "#22C55E", label: "Green" },
+  { color: "#F59E0B", label: "Amber" },
+  { color: "#8B5CF6", label: "Purple" },
+  { color: "#EC4899", label: "Pink" },
+];
 
 const SYSTEM_PROPS = [
   { name: "size", type: "number", default: "24", description: "Icon size in pixels" },
-  { name: "color", type: "string", default: '"currentColor"', description: "Icon color" },
-  { name: "strokeWidth", type: "number", default: "1.5", description: "Stroke width for line icons" },
+  { name: "stroke", type: "string", default: '"#646466"', description: "Stroke color" },
+  { name: "fill", type: "string", default: '"none"', description: "Fill color" },
+  { name: "strokeWidth", type: "number", default: "2", description: "Stroke width for line icons" },
 ];
 
 const ILLUSTRATION_PROPS = [
@@ -55,6 +72,11 @@ export function IconDetailModal({
 }: IconDetailModalProps) {
   const [previewSize, setPreviewSize] = useState(type === "system" ? "48" : "96");
   const [variant, setVariant] = useState<IllustrationVariant>("primary");
+  const [strokeColor, setStrokeColor] = useState("#646466");
+  const [fillColor, setFillColor] = useState("none");
+  const [strokeWidth, setStrokeWidth] = useState(2);
+  const [strokePickerOpen, setStrokePickerOpen] = useState(false);
+  const [fillPickerOpen, setFillPickerOpen] = useState(false);
 
   const importPath = type === "system" ? "@maqsad/icons/system" : "@maqsad/icons/illustrations";
   const importStatement = `import { ${name} } from '${importPath}';`;
@@ -67,7 +89,7 @@ export function IconDetailModal({
 <${name} />
 
 // With custom props
-<${name} size={24} color="currentColor" strokeWidth={2} />`
+<${name} size={24} stroke="${strokeColor}" fill="${fillColor === "none" ? "none" : fillColor}" strokeWidth={${strokeWidth}} />`
       : `import { ${name} } from '${importPath}';
 
 // Basic usage (primary variant, 48px)
@@ -131,7 +153,7 @@ export function IconDetailModal({
               padding: 24,
             }}
           >
-            {renderIcon(parseInt(previewSize, 10), variant)}
+            {renderIcon(parseInt(previewSize, 10), variant, strokeColor, fillColor, strokeWidth)}
           </div>
         </div>
 
@@ -147,6 +169,131 @@ export function IconDetailModal({
             size="xs"
           />
         </Group>
+
+        {/* Color Controls (system icons only) */}
+        {type === "system" && (
+          <>
+            <Group gap="md" align="center">
+              <Text size="sm" c="dimmed" w={80}>
+                Stroke:
+              </Text>
+              <Group gap="xs">
+                {COLOR_OPTIONS.map((opt) => (
+                  <Tooltip key={opt.color} label={opt.label} withArrow>
+                    <ColorSwatch
+                      color={opt.color}
+                      size={24}
+                      style={{
+                        cursor: "pointer",
+                        border: strokeColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
+                      }}
+                      onClick={() => setStrokeColor(opt.color)}
+                    />
+                  </Tooltip>
+                ))}
+                <Popover opened={strokePickerOpen} onChange={setStrokePickerOpen} position="bottom" withArrow>
+                  <Popover.Target>
+                    <Tooltip label="Custom color" withArrow>
+                      <ActionIcon
+                        variant="light"
+                        size={24}
+                        radius="xl"
+                        style={{ border: !COLOR_OPTIONS.some(o => o.color === strokeColor) ? "2px solid #228be6" : "2px solid transparent" }}
+                        onClick={() => setStrokePickerOpen((o) => !o)}
+                      >
+                        <IconPalette size={14} />
+                      </ActionIcon>
+                    </Tooltip>
+                  </Popover.Target>
+                  <Popover.Dropdown>
+                    <ColorPicker
+                      value={strokeColor}
+                      onChange={setStrokeColor}
+                      format="hex"
+                      swatches={COLOR_OPTIONS.map(o => o.color)}
+                    />
+                  </Popover.Dropdown>
+                </Popover>
+                <Text size="xs" c="dimmed" ff="monospace">{strokeColor}</Text>
+              </Group>
+            </Group>
+
+            <Group gap="md" align="center">
+              <Text size="sm" c="dimmed" w={80}>
+                Fill:
+              </Text>
+              <Group gap="xs">
+                <Tooltip label="None (transparent)">
+                  <Box
+                    style={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: "50%",
+                      cursor: "pointer",
+                      border: fillColor === "none" ? "2px solid #228be6" : "2px solid #dee2e6",
+                      background: "linear-gradient(135deg, #fff 45%, #ef4444 45%, #ef4444 55%, #fff 55%)",
+                    }}
+                    onClick={() => setFillColor("none")}
+                  />
+                </Tooltip>
+                {COLOR_OPTIONS.map((opt) => (
+                  <Tooltip key={opt.color} label={opt.label} withArrow>
+                    <ColorSwatch
+                      color={opt.color}
+                      size={24}
+                      style={{
+                        cursor: "pointer",
+                        border: fillColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
+                      }}
+                      onClick={() => setFillColor(opt.color)}
+                    />
+                  </Tooltip>
+                ))}
+                <Popover opened={fillPickerOpen} onChange={setFillPickerOpen} position="bottom" withArrow>
+                  <Popover.Target>
+                    <Tooltip label="Custom color" withArrow>
+                      <ActionIcon
+                        variant="light"
+                        size={24}
+                        radius="xl"
+                        style={{ border: fillColor !== "none" && !COLOR_OPTIONS.some(o => o.color === fillColor) ? "2px solid #228be6" : "2px solid transparent" }}
+                        onClick={() => setFillPickerOpen((o) => !o)}
+                      >
+                        <IconPalette size={14} />
+                      </ActionIcon>
+                    </Tooltip>
+                  </Popover.Target>
+                  <Popover.Dropdown>
+                    <ColorPicker
+                      value={fillColor === "none" ? "#646466" : fillColor}
+                      onChange={setFillColor}
+                      format="hex"
+                      swatches={COLOR_OPTIONS.map(o => o.color)}
+                    />
+                  </Popover.Dropdown>
+                </Popover>
+                <Text size="xs" c="dimmed" ff="monospace">{fillColor}</Text>
+              </Group>
+            </Group>
+
+            <Group gap="md" align="center">
+              <Text size="sm" c="dimmed" style={{ whiteSpace: "nowrap" }}>
+                Stroke Width:
+              </Text>
+              <Box style={{ flex: 1, maxWidth: 200 }}>
+                <Slider
+                  value={strokeWidth}
+                  onChange={setStrokeWidth}
+                  min={0.1}
+                  max={5}
+                  step={0.1}
+                  marks={[]}
+                />
+              </Box>
+              <Text size="xs" c="dimmed" ff="monospace" w={30}>{strokeWidth}</Text>
+            </Group>
+          </>
+        )}
 
         {/* Variant Control (illustrations only) */}
         {type === "illustration" && (
@@ -213,7 +360,9 @@ export function IconDetailModal({
               )}
             </CopyButton>
           </Group>
-          <CodeHighlight language="tsx" code={importStatement} />
+          <Box style={{ backgroundColor: "#f1f3f5", borderRadius: 8, overflow: "hidden" }}>
+            <CodeHighlight language="tsx" code={importStatement} />
+          </Box>
         </div>
 
         {/* Props Table */}
@@ -273,7 +422,9 @@ export function IconDetailModal({
               )}
             </CopyButton>
           </Group>
-          <CodeHighlight language="tsx" code={usageCode} />
+          <Box style={{ backgroundColor: "#f1f3f5", borderRadius: 8, overflow: "hidden" }}>
+            <CodeHighlight language="tsx" code={usageCode} />
+          </Box>
         </div>
       </Stack>
     </Modal>
