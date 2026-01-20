@@ -51,7 +51,7 @@ export function Shell({ children }: ShellProps) {
             </UnstyledButton>
           </Group>
           <Text size="sm" c="dimmed" visibleFrom="sm">
-            v{AppMeta.dependencies["@maqsad/icons"].replace(/[^0-9.]/g, "")}
+            v{AppMeta.dependencies["@maqsad/icons"].replace(/[^0-9.a-zA-Z-]/g, "")}
           </Text>
         </Group>
       </AppShell.Header>

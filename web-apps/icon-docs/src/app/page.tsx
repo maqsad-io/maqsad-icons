@@ -41,7 +41,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <div className="text-center mb-12">
         <Badge size="lg" variant="light" mb="md" style={{ textTransform: "none" }}>
-          v{AppMeta.dependencies["@maqsad/icons"].replace(/[^0-9.]/g, "")}
+          v{AppMeta.dependencies["@maqsad/icons"].replace(/[^0-9.a-zA-Z-]/g, "")}
         </Badge>
         <Title order={1} className="mb-4">
           Maqsad Icons

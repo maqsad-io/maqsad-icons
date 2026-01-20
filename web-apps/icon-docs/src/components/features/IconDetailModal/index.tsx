@@ -34,14 +34,12 @@ interface IconDetailModalProps {
 }
 
 const COLOR_OPTIONS = [
-  { color: "#646466", label: "Default Gray" },
-  { color: "#000000", label: "Black" },
-  { color: "#3B82F6", label: "Blue" },
-  { color: "#EF4444", label: "Red" },
-  { color: "#22C55E", label: "Green" },
-  { color: "#F59E0B", label: "Amber" },
-  { color: "#8B5CF6", label: "Purple" },
-  { color: "#EC4899", label: "Pink" },
+  { color: "#646466", label: "Gray" },
+  { color: "#F2AE1C", label: "Yellow" },
+  { color: "#5E85BC", label: "Light Blue" },
+  { color: "#F27781", label: "Pink" },
+  { color: "#97C99C", label: "Green" },
+  { color: "#05046A", label: "Dark Blue" },
 ];
 
 const SYSTEM_PROPS = [
@@ -136,210 +134,211 @@ export function IconDetailModal({
           </Badge>
         </Group>
       }
-      size="lg"
+      size="xl"
       centered
     >
       <Stack gap="lg">
-        {/* Preview Section */}
-        <div>
-          <Text size="sm" fw={500} mb="xs">
-            Preview
-          </Text>
-          <div
-            className="flex items-center justify-center rounded-lg border"
-            style={{
-              backgroundColor: type === "illustration" && variant === "light" ? "#374151" : "#f9fafb",
-              minHeight: 160,
-              padding: 24,
-            }}
-          >
-            {renderIcon(parseInt(previewSize, 10), variant, strokeColor, fillColor, strokeWidth)}
+        {/* Preview and Controls Section */}
+        <div style={{ display: "flex", gap: 24 }}>
+          {/* Preview - Left Side */}
+          <div style={{ flex: "0 0 40%" }}>
+            <Text size="sm" fw={500} mb="xs">
+              Preview
+            </Text>
+            <div
+              className="flex items-center justify-center rounded-lg border"
+              style={{
+                backgroundColor: type === "illustration" && variant === "light" ? "#374151" : "#f9fafb",
+                minHeight: 200,
+                padding: 24,
+              }}
+            >
+              {renderIcon(parseInt(previewSize, 10), variant, strokeColor, fillColor, strokeWidth)}
+            </div>
           </div>
-        </div>
 
-        {/* Size Control */}
-        <Group gap="md">
-          <Text size="sm" c="dimmed">
-            Size:
-          </Text>
-          <SegmentedControl
-            value={previewSize}
-            onChange={setPreviewSize}
-            data={sizeOptions.map((s) => ({ label: `${s}px`, value: s }))}
-            size="xs"
-          />
-        </Group>
-
-        {/* Color Controls (system icons only) */}
-        {type === "system" && (
-          <>
-            <Group gap="md" align="center">
-              <Text size="sm" c="dimmed" w={80}>
-                Stroke:
-              </Text>
-              <Group gap="xs">
-                {COLOR_OPTIONS.map((opt) => (
-                  <Tooltip key={opt.color} label={opt.label} withArrow>
-                    <ColorSwatch
-                      color={opt.color}
-                      size={24}
-                      style={{
-                        cursor: "pointer",
-                        border: strokeColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
-                      }}
-                      onClick={() => setStrokeColor(opt.color)}
-                    />
-                  </Tooltip>
-                ))}
-                <Popover opened={strokePickerOpen} onChange={setStrokePickerOpen} position="bottom" withArrow>
-                  <Popover.Target>
-                    <Tooltip label="Custom color" withArrow>
-                      <ActionIcon
-                        variant="light"
-                        size={24}
-                        radius="xl"
-                        style={{ border: !COLOR_OPTIONS.some(o => o.color === strokeColor) ? "2px solid #228be6" : "2px solid transparent" }}
-                        onClick={() => setStrokePickerOpen((o) => !o)}
-                      >
-                        <IconPalette size={14} />
-                      </ActionIcon>
-                    </Tooltip>
-                  </Popover.Target>
-                  <Popover.Dropdown>
-                    <ColorPicker
-                      value={strokeColor}
-                      onChange={setStrokeColor}
-                      format="hex"
-                      swatches={COLOR_OPTIONS.map(o => o.color)}
-                    />
-                  </Popover.Dropdown>
-                </Popover>
-                <Text size="xs" c="dimmed" ff="monospace">{strokeColor}</Text>
-              </Group>
-            </Group>
-
-            <Group gap="md" align="center">
-              <Text size="sm" c="dimmed" w={80}>
-                Fill:
-              </Text>
-              <Group gap="xs">
-                <Tooltip label="None (transparent)">
-                  <Box
-                    style={{
-                      width: 24,
-                      height: 24,
-                      borderRadius: "50%",
-                      cursor: "pointer",
-                      border: fillColor === "none" ? "2px solid #228be6" : "2px solid #dee2e6",
-                      background: "linear-gradient(135deg, #fff 45%, #ef4444 45%, #ef4444 55%, #fff 55%)",
-                    }}
-                    onClick={() => setFillColor("none")}
-                  />
-                </Tooltip>
-                {COLOR_OPTIONS.map((opt) => (
-                  <Tooltip key={opt.color} label={opt.label} withArrow>
-                    <ColorSwatch
-                      color={opt.color}
-                      size={24}
-                      style={{
-                        cursor: "pointer",
-                        border: fillColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
-                      }}
-                      onClick={() => setFillColor(opt.color)}
-                    />
-                  </Tooltip>
-                ))}
-                <Popover opened={fillPickerOpen} onChange={setFillPickerOpen} position="bottom" withArrow>
-                  <Popover.Target>
-                    <Tooltip label="Custom color" withArrow>
-                      <ActionIcon
-                        variant="light"
-                        size={24}
-                        radius="xl"
-                        style={{ border: fillColor !== "none" && !COLOR_OPTIONS.some(o => o.color === fillColor) ? "2px solid #228be6" : "2px solid transparent" }}
-                        onClick={() => setFillPickerOpen((o) => !o)}
-                      >
-                        <IconPalette size={14} />
-                      </ActionIcon>
-                    </Tooltip>
-                  </Popover.Target>
-                  <Popover.Dropdown>
-                    <ColorPicker
-                      value={fillColor === "none" ? "#646466" : fillColor}
-                      onChange={setFillColor}
-                      format="hex"
-                      swatches={COLOR_OPTIONS.map(o => o.color)}
-                    />
-                  </Popover.Dropdown>
-                </Popover>
-                <Text size="xs" c="dimmed" ff="monospace">{fillColor}</Text>
-              </Group>
-            </Group>
-
-            <Group gap="md" align="center">
-              <Text size="sm" c="dimmed" style={{ whiteSpace: "nowrap" }}>
-                Stroke Width:
-              </Text>
-              <Box style={{ flex: 1, maxWidth: 200 }}>
-                <Slider
-                  value={strokeWidth}
-                  onChange={setStrokeWidth}
-                  min={0.1}
-                  max={5}
-                  step={0.1}
-                  marks={[]}
-                />
-              </Box>
-              <Text size="xs" c="dimmed" ff="monospace" w={30}>{strokeWidth}</Text>
-            </Group>
-          </>
-        )}
-
-        {/* Variant Control (illustrations only) */}
-        {type === "illustration" && (
-          <>
+          {/* Controls - Right Side */}
+          <Stack gap="md" style={{ flex: 1 }}>
+            <Text size="sm" fw={500}>Controls</Text>
+            {/* Size Control */}
             <Group gap="md">
               <Text size="sm" c="dimmed">
-                Variant:
+                Size:
               </Text>
               <SegmentedControl
-                value={variant}
-                onChange={(v) => setVariant(v as IllustrationVariant)}
-                data={ILLUSTRATION_VARIANTS.map((v) => ({
-                  label: v.charAt(0).toUpperCase() + v.slice(1),
-                  value: v,
-                }))}
+                value={previewSize}
+                onChange={setPreviewSize}
+                data={sizeOptions.map((s) => ({ label: `${s}px`, value: s }))}
                 size="xs"
               />
             </Group>
 
-            {/* Variant Previews */}
-            <div>
-              <Text size="sm" fw={500} mb="xs">
-                All Variants
-              </Text>
-              <Group gap="lg">
-                {ILLUSTRATION_VARIANTS.map((v) => (
-                  <div key={v} className="text-center">
-                    <div
-                      className="flex items-center justify-center rounded-lg cursor-pointer transition-all"
+            {/* Color Controls (system icons only) */}
+            {type === "system" && (
+              <>
+                <Group gap="xs" align="center">
+                  <Text size="sm" c="dimmed" w={90} style={{ flexShrink: 0 }}>
+                    Stroke:
+                  </Text>
+                  {COLOR_OPTIONS.map((opt) => (
+                    <Tooltip key={opt.color} label={opt.label} withArrow>
+                      <ColorSwatch
+                        color={opt.color}
+                        size={24}
+                        style={{
+                          cursor: "pointer",
+                          border: strokeColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
+                        }}
+                        onClick={() => setStrokeColor(opt.color)}
+                      />
+                    </Tooltip>
+                  ))}
+                  <Popover opened={strokePickerOpen} onChange={setStrokePickerOpen} position="bottom" withArrow>
+                    <Popover.Target>
+                      <Tooltip label="Custom color" withArrow>
+                        <ActionIcon
+                          variant="light"
+                          size={24}
+                          radius="xl"
+                          style={{ border: !COLOR_OPTIONS.some(o => o.color === strokeColor) ? "2px solid #228be6" : "2px solid transparent" }}
+                          onClick={() => setStrokePickerOpen((o) => !o)}
+                        >
+                          <IconPalette size={14} />
+                        </ActionIcon>
+                      </Tooltip>
+                    </Popover.Target>
+                    <Popover.Dropdown>
+                      <ColorPicker
+                        value={strokeColor}
+                        onChange={setStrokeColor}
+                        format="hex"
+                        swatches={COLOR_OPTIONS.map(o => o.color)}
+                      />
+                    </Popover.Dropdown>
+                  </Popover>
+                </Group>
+
+                <Group gap="xs" align="center">
+                  <Text size="sm" c="dimmed" w={90} style={{ flexShrink: 0 }}>
+                    Fill:
+                  </Text>
+                  <Tooltip label="None (transparent)">
+                    <Box
                       style={{
-                        backgroundColor: v === "light" ? "#374151" : "#f3f4f6",
-                        padding: 12,
-                        border: variant === v ? "2px solid #228be6" : "2px solid transparent",
+                        width: 24,
+                        height: 24,
+                        borderRadius: "50%",
+                        cursor: "pointer",
+                        border: fillColor === "none" ? "2px solid #228be6" : "2px solid #dee2e6",
+                        background: "linear-gradient(135deg, #fff 45%, #ef4444 45%, #ef4444 55%, #fff 55%)",
                       }}
-                      onClick={() => setVariant(v)}
-                    >
-                      {renderIcon(48, v)}
-                    </div>
-                    <Text size="xs" c="dimmed" mt={4}>
-                      {v}
-                    </Text>
-                  </div>
-                ))}
+                      onClick={() => setFillColor("none")}
+                    />
+                  </Tooltip>
+                  {COLOR_OPTIONS.map((opt) => (
+                    <Tooltip key={opt.color} label={opt.label} withArrow>
+                      <ColorSwatch
+                        color={opt.color}
+                        size={24}
+                        style={{
+                          cursor: "pointer",
+                          border: fillColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
+                        }}
+                        onClick={() => setFillColor(opt.color)}
+                      />
+                    </Tooltip>
+                  ))}
+                  <Popover opened={fillPickerOpen} onChange={setFillPickerOpen} position="bottom" withArrow>
+                    <Popover.Target>
+                      <Tooltip label="Custom color" withArrow>
+                        <ActionIcon
+                          variant="light"
+                          size={24}
+                          radius="xl"
+                          style={{ border: fillColor !== "none" && !COLOR_OPTIONS.some(o => o.color === fillColor) ? "2px solid #228be6" : "2px solid transparent" }}
+                          onClick={() => setFillPickerOpen((o) => !o)}
+                        >
+                          <IconPalette size={14} />
+                        </ActionIcon>
+                      </Tooltip>
+                    </Popover.Target>
+                    <Popover.Dropdown>
+                      <ColorPicker
+                        value={fillColor === "none" ? "#646466" : fillColor}
+                        onChange={setFillColor}
+                        format="hex"
+                        swatches={COLOR_OPTIONS.map(o => o.color)}
+                      />
+                    </Popover.Dropdown>
+                  </Popover>
+                </Group>
+
+                <Group gap="xs" align="center">
+                  <Text size="sm" c="dimmed" w={90} style={{ flexShrink: 0 }}>
+                    Stroke Width:
+                  </Text>
+                  <Box style={{ flex: 1, maxWidth: 150 }}>
+                    <Slider
+                      value={strokeWidth}
+                      onChange={setStrokeWidth}
+                      min={0.1}
+                      max={5}
+                      step={0.1}
+                      marks={[]}
+                    />
+                  </Box>
+                  <Text size="xs" c="dimmed" ff="monospace" w={30}>{strokeWidth}</Text>
+                </Group>
+              </>
+            )}
+
+            {/* Variant Control (illustrations only) */}
+            {type === "illustration" && (
+              <Group gap="md">
+                <Text size="sm" c="dimmed">
+                  Variant:
+                </Text>
+                <SegmentedControl
+                  value={variant}
+                  onChange={(v) => setVariant(v as IllustrationVariant)}
+                  data={ILLUSTRATION_VARIANTS.map((v) => ({
+                    label: v.charAt(0).toUpperCase() + v.slice(1),
+                    value: v,
+                  }))}
+                  size="xs"
+                />
               </Group>
-            </div>
-          </>
+            )}
+          </Stack>
+        </div>
+
+        {/* All Variants Preview (illustrations only) */}
+        {type === "illustration" && (
+          <div>
+            <Text size="sm" fw={500} mb="xs">
+              All Variants
+            </Text>
+            <Group gap="lg">
+              {ILLUSTRATION_VARIANTS.map((v) => (
+                <div key={v} className="text-center">
+                  <div
+                    className="flex items-center justify-center rounded-lg cursor-pointer transition-all"
+                    style={{
+                      backgroundColor: v === "light" ? "#374151" : "#f3f4f6",
+                      padding: 12,
+                      border: variant === v ? "2px solid #228be6" : "2px solid transparent",
+                    }}
+                    onClick={() => setVariant(v)}
+                  >
+                    {renderIcon(48, v)}
+                  </div>
+                  <Text size="xs" c="dimmed" mt={4}>
+                    {v}
+                  </Text>
+                </div>
+              ))}
+            </Group>
+          </div>
         )}
 
         <Divider />
