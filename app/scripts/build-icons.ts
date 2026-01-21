@@ -126,15 +126,64 @@ const SYSTEM_ICON_FILL_COLORS_TO_REMOVE = [
 ];
 
 /**
- * Replace hardcoded stroke and fill colors in system icons so they inherit from the SVG element
- * White fills are PRESERVED - they are typically used for cutouts/details
- * Also removes strokeWidth attributes so they can be controlled via props
+ * Process stroke-based system icons
+ * - Removes hardcoded stroke colors so they inherit from SVG element
+ * - Replaces themeable fill colors with fill="none" 
+ * - Ensures all paths have fill="none" to prevent parent fill from cascading
+ * - Preserves white fills (used for clipPaths, masks, etc.)
+ * - Removes strokeWidth so it can be controlled via props
  */
-function replaceSystemIconColors(content: string): string {
+function processStrokeIconColors(content: string): string {
   let result = content;
 
   // Remove stroke color attributes (they should inherit from SVG)
-  // Only remove common themeable colors, preserve white strokes
+  for (const color of SYSTEM_ICON_STROKE_COLORS_TO_REMOVE) {
+    const strokeRegex = new RegExp(`\\sstroke="${color}"`, 'gi');
+    result = result.replace(strokeRegex, '');
+  }
+
+  // For stroke icons, replace themeable fill colors with fill="none"
+  // This ensures colored fills don't appear in stroke icons
+  for (const color of SYSTEM_ICON_FILL_COLORS_TO_REMOVE) {
+    const fillRegex = new RegExp(`fill="${color}"`, 'gi');
+    result = result.replace(fillRegex, 'fill="none"');
+  }
+
+  // For stroke icons, ensure all shape elements have fill="none" to prevent
+  // the parent SVG's fill from cascading down and covering the strokes
+  // Match path, circle, rect, ellipse, line, polyline, polygon elements
+  const shapeElements = ['path', 'circle', 'rect', 'ellipse', 'line', 'polyline', 'polygon'];
+  for (const element of shapeElements) {
+    // Match elements that don't already have a fill attribute
+    // Add fill="none" to them
+    const regex = new RegExp(`<${element}(?![^>]*\\sfill=)([^>]*)(\\/?>)`, 'gi');
+    result = result.replace(regex, `<${element} fill="none"$1$2`);
+  }
+
+  // Remove strokeWidth attributes so they inherit from the parent SVG element
+  result = result.replace(/\sstrokeWidth="[^"]*"/g, '');
+  result = result.replace(/\sstroke-width="[^"]*"/g, '');
+
+  // Clean up any double spaces left by removed attributes
+  result = result.replace(/\s+/g, ' ');
+  // Clean up space before closing bracket
+  result = result.replace(/\s+>/g, '>');
+  result = result.replace(/\s+\/>/g, ' />');
+
+  return result;
+}
+
+/**
+ * Process filled system icons
+ * - Removes hardcoded stroke colors so they inherit from SVG element
+ * - Removes themeable fill colors so they inherit from SVG element
+ * - Preserves white fills (used for cutouts/details)
+ * - Removes strokeWidth so it can be controlled via props
+ */
+function processFilledIconColors(content: string): string {
+  let result = content;
+
+  // Remove stroke color attributes (they should inherit from SVG)
   for (const color of SYSTEM_ICON_STROKE_COLORS_TO_REMOVE) {
     const strokeRegex = new RegExp(`\\sstroke="${color}"`, 'gi');
     result = result.replace(strokeRegex, '');
@@ -285,7 +334,7 @@ async function processSystemIcons(): Promise<void> {
   // Create output directory
   fs.mkdirSync(outputDir, { recursive: true });
 
-  const icons: Map<string, { content: string; viewBox: string; svgStyle: Record<string, string> | null }> = new Map();
+  const icons: Map<string, { content: string; viewBox: string; svgStyle: Record<string, string> | null; iconType: string }> = new Map();
 
   // Read icons from stroke and filled directories (prefer stroke, fallback to filled)
   const iconTypes = ['stroke', 'filled'];
@@ -306,11 +355,16 @@ async function processSystemIcons(): Promise<void> {
       // Optimize SVG
       const optimized = optimize(svgContent, svgoConfig);
       const { content, viewBox, svgStyle } = extractSvgContent(optimized.data);
-      // Replace hardcoded colors with currentColor for system icons
-      const colorReplacedContent = replaceSystemIconColors(content);
+
+      // Process colors based on icon type
+      // Stroke icons: ensure fill="none" on all paths to prevent fill prop from cascading
+      // Filled icons: remove themeable fill colors so they can be controlled via props
+      const colorReplacedContent = iconType === 'stroke'
+        ? processStrokeIconColors(content)
+        : processFilledIconColors(content);
       const jsxContent = svgToJsx(colorReplacedContent);
 
-      icons.set(iconName, { content: jsxContent, viewBox, svgStyle });
+      icons.set(iconName, { content: jsxContent, viewBox, svgStyle, iconType });
     }
   }
 
@@ -331,7 +385,7 @@ export {};
 `;
   }
 
-  for (const [name, { content, svgStyle }] of icons) {
+  for (const [name, { content, svgStyle, iconType }] of icons) {
     const componentName = `Icon${toPascalCase(name)}`;
     const hasMultipleElements = content.includes('><');
     const svgStyleArg = svgStyle ? JSON.stringify(svgStyle) : 'null';
