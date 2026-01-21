@@ -176,8 +176,7 @@ function processStrokeIconColors(content: string): string {
 /**
  * Process filled system icons
  * - Removes hardcoded stroke colors so they inherit from SVG element
- * - Removes themeable fill colors so they inherit from SVG element
- * - Preserves white fills (used for cutouts/details)
+ * - Removes ALL fill colors EXCEPT white (white is preserved for cutouts/details)
  * - Removes strokeWidth so it can be controlled via props
  */
 function processFilledIconColors(content: string): string {
@@ -189,12 +188,11 @@ function processFilledIconColors(content: string): string {
     result = result.replace(strokeRegex, '');
   }
 
-  // Remove fill color attributes (they should inherit from SVG)
-  // Only remove themeable colors, preserve white fills used for cutouts/details
-  for (const color of SYSTEM_ICON_FILL_COLORS_TO_REMOVE) {
-    const fillRegex = new RegExp(`\\sfill="${color}"`, 'gi');
-    result = result.replace(fillRegex, '');
-  }
+  // Remove ALL fill color attributes EXCEPT white and none
+  // This allows any fill color to be controlled via the fill prop
+  // White fills are preserved as they're used for cutouts, details, and backgrounds
+  // Match fill="<color>" but skip white variants and none
+  result = result.replace(/\sfill="(?!#fff\b|#ffffff\b|white\b|none\b)([^"]+)"/gi, '');
 
   // Remove strokeWidth attributes so they inherit from the parent SVG element
   result = result.replace(/\sstrokeWidth="[^"]*"/g, '');
