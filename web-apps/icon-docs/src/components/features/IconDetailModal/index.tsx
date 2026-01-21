@@ -218,60 +218,63 @@ export function IconDetailModal({
                   </Popover>
                 </Group>
 
-                <Group gap="xs" align="center">
-                  <Text size="sm" c="dimmed" w={90} style={{ flexShrink: 0 }}>
-                    Fill:
-                  </Text>
-                  <Tooltip label="None (transparent)">
-                    <Box
-                      style={{
-                        width: 24,
-                        height: 24,
-                        borderRadius: "50%",
-                        cursor: "pointer",
-                        border: fillColor === "none" ? "2px solid #228be6" : "2px solid #dee2e6",
-                        background: "linear-gradient(135deg, #fff 45%, #ef4444 45%, #ef4444 55%, #fff 55%)",
-                      }}
-                      onClick={() => setFillColor("none")}
-                    />
-                  </Tooltip>
-                  {COLOR_OPTIONS.map((opt) => (
-                    <Tooltip key={opt.color} label={opt.label} withArrow>
-                      <ColorSwatch
-                        color={opt.color}
-                        size={24}
+                {/* Fill Color - only show for icons with "Filled" in the name */}
+                {name.includes("Filled") && (
+                  <Group gap="xs" align="center">
+                    <Text size="sm" c="dimmed" w={90} style={{ flexShrink: 0 }}>
+                      Fill:
+                    </Text>
+                    <Tooltip label="None (transparent)">
+                      <Box
                         style={{
+                          width: 24,
+                          height: 24,
+                          borderRadius: "50%",
                           cursor: "pointer",
-                          border: fillColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
+                          border: fillColor === "none" ? "2px solid #228be6" : "2px solid #dee2e6",
+                          background: "linear-gradient(135deg, #fff 45%, #ef4444 45%, #ef4444 55%, #fff 55%)",
                         }}
-                        onClick={() => setFillColor(opt.color)}
+                        onClick={() => setFillColor("none")}
                       />
                     </Tooltip>
-                  ))}
-                  <Popover opened={fillPickerOpen} onChange={setFillPickerOpen} position="bottom" withArrow>
-                    <Popover.Target>
-                      <Tooltip label="Custom color" withArrow>
-                        <ActionIcon
-                          variant="light"
+                    {COLOR_OPTIONS.map((opt) => (
+                      <Tooltip key={opt.color} label={opt.label} withArrow>
+                        <ColorSwatch
+                          color={opt.color}
                           size={24}
-                          radius="xl"
-                          style={{ border: fillColor !== "none" && !COLOR_OPTIONS.some(o => o.color === fillColor) ? "2px solid #228be6" : "2px solid transparent" }}
-                          onClick={() => setFillPickerOpen((o) => !o)}
-                        >
-                          <IconPalette size={14} />
-                        </ActionIcon>
+                          style={{
+                            cursor: "pointer",
+                            border: fillColor === opt.color ? "2px solid #228be6" : "2px solid transparent",
+                          }}
+                          onClick={() => setFillColor(opt.color)}
+                        />
                       </Tooltip>
-                    </Popover.Target>
-                    <Popover.Dropdown>
-                      <ColorPicker
-                        value={fillColor === "none" ? "#646466" : fillColor}
-                        onChange={setFillColor}
-                        format="hex"
-                        swatches={COLOR_OPTIONS.map(o => o.color)}
-                      />
-                    </Popover.Dropdown>
-                  </Popover>
-                </Group>
+                    ))}
+                    <Popover opened={fillPickerOpen} onChange={setFillPickerOpen} position="bottom" withArrow>
+                      <Popover.Target>
+                        <Tooltip label="Custom color" withArrow>
+                          <ActionIcon
+                            variant="light"
+                            size={24}
+                            radius="xl"
+                            style={{ border: fillColor !== "none" && !COLOR_OPTIONS.some(o => o.color === fillColor) ? "2px solid #228be6" : "2px solid transparent" }}
+                            onClick={() => setFillPickerOpen((o) => !o)}
+                          >
+                            <IconPalette size={14} />
+                          </ActionIcon>
+                        </Tooltip>
+                      </Popover.Target>
+                      <Popover.Dropdown>
+                        <ColorPicker
+                          value={fillColor === "none" ? "#646466" : fillColor}
+                          onChange={setFillColor}
+                          format="hex"
+                          swatches={COLOR_OPTIONS.map(o => o.color)}
+                        />
+                      </Popover.Dropdown>
+                    </Popover>
+                  </Group>
+                )}
 
                 <Group gap="xs" align="center">
                   <Text size="sm" c="dimmed" w={90} style={{ flexShrink: 0 }}>
