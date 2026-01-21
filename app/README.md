@@ -137,11 +137,11 @@ function App() {
 
 ## Available Icons
 
-**Total: 76 icons** (63 system icons + 13 illustration icons)
+**Total: 106 icons** (90 system icons + 16 illustration icons)
 
-> For a complete list with import examples, see [ICONS.md](./ICONS.md)
+> For a complete list with import examples, see [ICONS.md](./src/ICONS.md)
 
-### System Icons (63)
+### System Icons (90)
 
 <table>
   <tr>
@@ -165,11 +165,11 @@ function App() {
   <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/check-circle.svg" width="24" height="24" /><br /><sub>CheckCircle</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/check-circle-filled.svg" width="24" height="24" /><br /><sub>CheckCircleFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/check-circle-filled-1.svg" width="24" height="24" /><br /><sub>CheckCircleFilled1</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/chemistry.svg" width="24" height="24" /><br /><sub>Chemistry</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/chevron-back.svg" width="24" height="24" /><br /><sub>ChevronBack</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/chevron-down.svg" width="24" height="24" /><br /><sub>ChevronDown</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/chevron-forward.svg" width="24" height="24" /><br /><sub>ChevronForward</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/chevron-up.svg" width="24" height="24" /><br /><sub>ChevronUp</sub></td>
   </tr>
   <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/chevron-up.svg" width="24" height="24" /><br /><sub>ChevronUp</sub></td>
@@ -199,11 +199,11 @@ function App() {
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/negative-circle-filled.svg" width="24" height="24" /><br /><sub>NegativeCircleFilled</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/notes.svg" width="24" height="24" /><br /><sub>Notes</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/padlock-locked.svg" width="24" height="24" /><br /><sub>PadlockLocked</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/pencil-hand.svg" width="24" height="24" /><br /><sub>PencilHand</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/physics.svg" width="24" height="24" /><br /><sub>Physics</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/pin.svg" width="24" height="24" /><br /><sub>Pin</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/pin.svg" width="24" height="24" /><br /><sub>Pin</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/pin-filled.svg" width="24" height="24" /><br /><sub>PinFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/question-bank.svg" width="24" height="24" /><br /><sub>QuestionBank</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/stroke/reset.svg" width="24" height="24" /><br /><sub>Reset</sub></td>
   </tr>
@@ -227,7 +227,7 @@ function App() {
   </tr>
 </table>
 
-### Illustration Icons (13)
+### Illustration Icons (16)
 
 <table>
   <tr>
@@ -240,23 +240,26 @@ function App() {
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/giki-primary.svg" width="48" height="48" /><br /><sub>Giki</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/iba-primary.svg" width="48" height="48" /><br /><sub>Iba</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/live-sessions-primary.svg" width="48" height="48" /><br /><sub>LiveSessions</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/lums-primary.svg" width="48" height="48" /><br /><sub>Lums</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/logo-maqsad.svg" width="48" height="48" /><br /><sub>LogoMaqsad</sub></td>
   </tr>
   <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/logo-maqsad-512-bg-white.svg" width="48" height="48" /><br /><sub>LogoMaqsad512BgWhite</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/lums-primary.svg" width="48" height="48" /><br /><sub>Lums</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-confused-primary.svg" width="48" height="48" /><br /><sub>MissHumaConfused</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/notes-primary.svg" width="48" height="48" /><br /><sub>Notes</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/sikka-primary.svg" width="48" height="48" /><br /><sub>Sikka</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/tests-primary.svg" width="48" height="48" /><br /><sub>Tests</sub></td>
   </tr>
   <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/notes-2-primary.svg" width="48" height="48" /><br /><sub>Notes2</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/sikka-primary.svg" width="48" height="48" /><br /><sub>Sikka</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/tests-primary.svg" width="48" height="48" /><br /><sub>Tests</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/video-lectures-primary.svg" width="48" height="48" /><br /><sub>VideoLectures</sub></td>
   </tr>
 </table>
 
 ## Variants Explained
 
-| Variant     | Preview                                                                                      | Description             | Use Case                   |
-| ----------- | -------------------------------------------------------------------------------------------- | ----------------------- | -------------------------- |
+| Variant     | Preview                                                                                                                                                        | Description             | Use Case                   |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | -------------------------- |
 | `primary`   | <img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/doubtsolve-primary.svg" width="48" height="48" />     | Blue color scheme       | Default, general use       |
 | `secondary` | <img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/secondary/doubtsolve-secondary.svg" width="48" height="48" /> | Brown/pink color scheme | Alternative styling        |
 | `dark`      | <img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/dark/doubtsolve-dark.svg" width="48" height="48" />           | Dark monotone           | Icons on light backgrounds |
