@@ -18,8 +18,8 @@ importers:
         specifier: ^8.3.9
         version: 8.3.12(react@19.2.0)
       '@maqsad/icons':
-        specifier: 0.2.33-alpha
-        version: 0.2.33-alpha(react@19.2.0)
+        specifier: 0.2.34-alpha
+        version: 0.2.34-alpha(react@19.2.0)
       '@tabler/icons-react':
         specifier: ^3.35.0
         version: 3.36.1(react@19.2.0)
@@ -410,8 +410,8 @@ packages:
     peerDependencies:
       react: ^18.x || ^19.x
 
-  '@maqsad/icons@0.2.33-alpha':
-    resolution: {integrity: sha512-MaKG87gtoc6Hy0uYxym1DdlSHKxEQIdMi6nmvzasUjXu16WoZxqIrR60piZqaNvb4FTA00FLH4O5/uEYWBbZPg==}
+  '@maqsad/icons@0.2.34-alpha':
+    resolution: {integrity: sha512-LDmmvptK+5ZZGNur4XjPT0dlXrWlZE/xIfSsg4VFEk6svfWb4T8DII34SY+E5gxRO7ot5ms/jCwQFOJCfTRKPQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: '>=16.8.0'
@@ -2512,7 +2512,7 @@ snapshots:
     dependencies:
       react: 19.2.0
 
-  '@maqsad/icons@0.2.33-alpha(react@19.2.0)':
+  '@maqsad/icons@0.2.34-alpha(react@19.2.0)':
     dependencies:
       react: 19.2.0
 
