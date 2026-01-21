@@ -25,11 +25,19 @@ export default function AllIconsPage() {
   const [activeTab, setActiveTab] = useState<string | null>("all");
   const [selectedIcon, setSelectedIcon] = useState<{ name: string; type: IconType } | null>(null);
 
-  const filteredSystemIcons = useMemo(() => {
-    return SYSTEM_ICONS.filter((name) =>
-      name.toLowerCase().includes(search.toLowerCase())
-    );
+  const { strokeIcons, filledIcons } = useMemo(() => {
+    const searchLower = search.toLowerCase();
+    const filtered = SYSTEM_ICONS.filter((name) => name.toLowerCase().includes(searchLower));
+
+    return {
+      strokeIcons: filtered.filter((name) => !name.includes("Filled")),
+      filledIcons: filtered.filter((name) => name.includes("Filled")),
+    };
   }, [search]);
+
+  const filteredSystemIcons = useMemo(() => {
+    return [...strokeIcons, ...filledIcons];
+  }, [strokeIcons, filledIcons]);
 
   const filteredIllustrationIcons = useMemo(() => {
     return ILLUSTRATION_ICONS.filter((name) =>
@@ -86,10 +94,16 @@ export default function AllIconsPage() {
         </Tabs.List>
 
         <Tabs.Panel value="all">
-          {filteredSystemIcons.length > 0 && (
+          {/* Stroke Icons Section */}
+          {strokeIcons.length > 0 && (
             <div className="mb-8">
               <Group justify="space-between" mb="md">
-                <Title order={3}>System Icons</Title>
+                <Group gap="xs">
+                  <Title order={3}>System Icons - Stroke</Title>
+                  <Badge variant="light" color="gray">
+                    {strokeIcons.length}
+                  </Badge>
+                </Group>
                 <Text
                   component={Link}
                   href="/icons/system"
@@ -101,7 +115,7 @@ export default function AllIconsPage() {
                 </Text>
               </Group>
               <SimpleGrid cols={{ base: 2, xs: 3, sm: 4, md: 5, lg: 6 }} spacing="md">
-                {filteredSystemIcons.slice(0, 12).map((name) => {
+                {strokeIcons.slice(0, 12).map((name) => {
                   const IconComponent = SystemIconsMap[name];
                   return (
                     <IconCard
@@ -114,10 +128,57 @@ export default function AllIconsPage() {
                   );
                 })}
               </SimpleGrid>
-              {filteredSystemIcons.length > 12 && (
+              {strokeIcons.length > 12 && (
                 <Card mt="md" p="sm" withBorder className="text-center">
                   <Text size="sm" c="dimmed">
-                    +{filteredSystemIcons.length - 12} more system icons.{" "}
+                    +{strokeIcons.length - 12} more stroke icons.{" "}
+                    <Text component={Link} href="/icons/system" c="blue" inherit>
+                      View all
+                    </Text>
+                  </Text>
+                </Card>
+              )}
+            </div>
+          )}
+
+          {/* Filled Icons Section */}
+          {filledIcons.length > 0 && (
+            <div className="mb-8">
+              <Group justify="space-between" mb="md">
+                <Group gap="xs">
+                  <Title order={3}>System Icons - Filled</Title>
+                  <Badge variant="light" color="gray">
+                    {filledIcons.length}
+                  </Badge>
+                </Group>
+                <Text
+                  component={Link}
+                  href="/icons/system"
+                  size="sm"
+                  c="blue"
+                  className="hover:underline"
+                >
+                  View all →
+                </Text>
+              </Group>
+              <SimpleGrid cols={{ base: 2, xs: 3, sm: 4, md: 5, lg: 6 }} spacing="md">
+                {filledIcons.slice(0, 12).map((name) => {
+                  const IconComponent = SystemIconsMap[name];
+                  return (
+                    <IconCard
+                      key={name}
+                      name={name}
+                      icon={IconComponent ? <IconComponent size={24} /> : null}
+                      copyText={`import { ${name} } from '@maqsad/icons/system';`}
+                      onClick={() => setSelectedIcon({ name, type: "system" })}
+                    />
+                  );
+                })}
+              </SimpleGrid>
+              {filledIcons.length > 12 && (
+                <Card mt="md" p="sm" withBorder className="text-center">
+                  <Text size="sm" c="dimmed">
+                    +{filledIcons.length - 12} more filled icons.{" "}
                     <Text component={Link} href="/icons/system" c="blue" inherit>
                       View all
                     </Text>
@@ -167,20 +228,59 @@ export default function AllIconsPage() {
 
         <Tabs.Panel value="system">
           {filteredSystemIcons.length > 0 ? (
-            <SimpleGrid cols={{ base: 2, xs: 3, sm: 4, md: 5, lg: 6 }} spacing="md">
-              {filteredSystemIcons.map((name) => {
-                const IconComponent = SystemIconsMap[name];
-                return (
-                  <IconCard
-                    key={name}
-                    name={name}
-                    icon={IconComponent ? <IconComponent size={24} /> : null}
-                    copyText={`import { ${name} } from '@maqsad/icons/system';`}
-                    onClick={() => setSelectedIcon({ name, type: "system" })}
-                  />
-                );
-              })}
-            </SimpleGrid>
+            <>
+              {/* Stroke Icons Section */}
+              {strokeIcons.length > 0 && (
+                <div className="mb-8">
+                  <Group mb="md">
+                    <Title order={3}>Stroke Icons</Title>
+                    <Badge variant="light" color="gray">
+                      {strokeIcons.length}
+                    </Badge>
+                  </Group>
+                  <SimpleGrid cols={{ base: 2, xs: 3, sm: 4, md: 5, lg: 6 }} spacing="md">
+                    {strokeIcons.map((name) => {
+                      const IconComponent = SystemIconsMap[name];
+                      return (
+                        <IconCard
+                          key={name}
+                          name={name}
+                          icon={IconComponent ? <IconComponent size={24} /> : null}
+                          copyText={`import { ${name} } from '@maqsad/icons/system';`}
+                          onClick={() => setSelectedIcon({ name, type: "system" })}
+                        />
+                      );
+                    })}
+                  </SimpleGrid>
+                </div>
+              )}
+
+              {/* Filled Icons Section */}
+              {filledIcons.length > 0 && (
+                <div>
+                  <Group mb="md">
+                    <Title order={3}>Filled Icons</Title>
+                    <Badge variant="light" color="gray">
+                      {filledIcons.length}
+                    </Badge>
+                  </Group>
+                  <SimpleGrid cols={{ base: 2, xs: 3, sm: 4, md: 5, lg: 6 }} spacing="md">
+                    {filledIcons.map((name) => {
+                      const IconComponent = SystemIconsMap[name];
+                      return (
+                        <IconCard
+                          key={name}
+                          name={name}
+                          icon={IconComponent ? <IconComponent size={24} /> : null}
+                          copyText={`import { ${name} } from '@maqsad/icons/system';`}
+                          onClick={() => setSelectedIcon({ name, type: "system" })}
+                        />
+                      );
+                    })}
+                  </SimpleGrid>
+                </div>
+              )}
+            </>
           ) : (
             <Card p="xl" withBorder className="text-center">
               <Text c="dimmed">No system icons found matching &quot;{search}&quot;</Text>
