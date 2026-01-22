@@ -4,7 +4,8 @@ import * as AppMeta from "../../../../package.json";
 
 import { AppShell, Burger, Group, NavLink, Text, Title, UnstyledButton } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconPalette, IconLayoutGrid, IconPhoto, IconHome } from "@tabler/icons-react";
+import { IconLayoutGrid, IconPhoto, IconHome, IconPalette } from "@tabler/icons-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -35,18 +36,24 @@ export function Shell({ children }: ShellProps) {
       }}
       padding="md"
     >
-      <AppShell.Header className="border-b border-gray-200">
+      <AppShell.Header className="border-b border-gray-200 px-3">
         <Group h="100%" px="md" justify="space-between">
           <Group>
             <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
             <UnstyledButton component={Link} href="/">
               <Group gap="xs">
-                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                  <IconPalette size={20} className="text-white" />
+                <div className="flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/logo-no-margins.png"
+                    alt="Maqsad Logo"
+                    width={70}
+                    height={20}
+                    priority
+                  />
                 </div>
-                <Title order={4} className="font-semibold">
+                {/* <Title order={4} className="font-semibold">
                   {APP_NAME}
-                </Title>
+                </Title> */}
               </Group>
             </UnstyledButton>
           </Group>
