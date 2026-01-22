@@ -35,6 +35,9 @@ importers:
       react-dom:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
+      sass:
+        specifier: ^1.97.3
+        version: 1.97.3
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -69,9 +72,6 @@ importers:
       prettier:
         specifier: ^3.5.0
         version: 3.8.0
-      sass:
-        specifier: ^1.97.3
-        version: 1.97.3
       tailwindcss:
         specifier: ^4
         version: 4.1.18
