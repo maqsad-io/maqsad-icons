@@ -138,9 +138,7 @@ export function IconDetailModal({
       centered
     >
       <Stack gap="lg">
-        {/* Preview and Controls Section */}
         <div style={{ display: "flex", gap: 24 }}>
-          {/* Preview - Left Side */}
           <div style={{ flex: "0 0 40%" }}>
             <Text size="sm" fw={500} mb="xs">
               Preview
@@ -157,10 +155,8 @@ export function IconDetailModal({
             </div>
           </div>
 
-          {/* Controls - Right Side */}
           <Stack gap="md" style={{ flex: 1 }}>
             <Text size="sm" fw={500}>Controls</Text>
-            {/* Size Control */}
             <Group gap="md">
               <Text size="sm" c="dimmed">
                 Size:
@@ -173,7 +169,6 @@ export function IconDetailModal({
               />
             </Group>
 
-            {/* Color Controls (system icons only) */}
             {type === "system" && (
               <>
                 <Group gap="xs" align="center">
@@ -218,7 +213,6 @@ export function IconDetailModal({
                   </Popover>
                 </Group>
 
-                {/* Fill Color - only show for icons with "Filled" in the name */}
                 {name.includes("Filled") && (
                   <Group gap="xs" align="center">
                     <Text size="sm" c="dimmed" w={90} style={{ flexShrink: 0 }}>
@@ -295,7 +289,6 @@ export function IconDetailModal({
               </>
             )}
 
-            {/* Variant Control (illustrations only) */}
             {type === "illustration" && (
               <Group gap="md">
                 <Text size="sm" c="dimmed">
@@ -315,7 +308,6 @@ export function IconDetailModal({
           </Stack>
         </div>
 
-        {/* All Variants Preview (illustrations only) */}
         {type === "illustration" && (
           <div>
             <Text size="sm" fw={500} mb="xs">
@@ -346,28 +338,15 @@ export function IconDetailModal({
 
         <Divider />
 
-        {/* Import Section */}
         <div>
-          <Group justify="space-between" mb="xs">
-            <Text size="sm" fw={500}>
-              Import
-            </Text>
-            <CopyButton value={importStatement} timeout={2000}>
-              {({ copied, copy }) => (
-                <Tooltip label={copied ? "Copied!" : "Copy import"} withArrow>
-                  <ActionIcon color={copied ? "teal" : "gray"} variant="subtle" onClick={copy} size="sm">
-                    {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
-                  </ActionIcon>
-                </Tooltip>
-              )}
-            </CopyButton>
-          </Group>
+          <Text size="sm" fw={500}>
+            Import
+          </Text>
           <Box style={{ backgroundColor: "#f1f3f5", borderRadius: 8, overflow: "hidden" }}>
             <CodeHighlight language="tsx" code={importStatement} />
           </Box>
         </div>
 
-        {/* Props Table */}
         <div>
           <Text size="sm" fw={500} mb="xs">
             Props
@@ -408,22 +387,10 @@ export function IconDetailModal({
           </Table>
         </div>
 
-        {/* Usage Example */}
         <div>
-          <Group justify="space-between" mb="xs">
-            <Text size="sm" fw={500}>
-              Usage Example
-            </Text>
-            <CopyButton value={usageCode} timeout={2000}>
-              {({ copied, copy }) => (
-                <Tooltip label={copied ? "Copied!" : "Copy code"} withArrow>
-                  <ActionIcon color={copied ? "teal" : "gray"} variant="subtle" onClick={copy} size="sm">
-                    {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
-                  </ActionIcon>
-                </Tooltip>
-              )}
-            </CopyButton>
-          </Group>
+          <Text size="sm" fw={500}>
+            Usage Example
+          </Text>
           <Box style={{ backgroundColor: "#f1f3f5", borderRadius: 8, overflow: "hidden" }}>
             <CodeHighlight language="tsx" code={usageCode} />
           </Box>

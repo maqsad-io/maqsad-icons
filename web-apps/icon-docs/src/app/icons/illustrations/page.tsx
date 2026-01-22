@@ -101,7 +101,6 @@ export default function IllustrationIconsPage() {
         </Group>
       </Group>
 
-      {/* Usage Example */}
       <Card shadow="sm" padding="md" radius="md" withBorder mb="xl">
         <Title order={4} className="mb-3">
           Usage
@@ -118,7 +117,6 @@ export default function IllustrationIconsPage() {
         />
       </Card>
 
-      {/* Variant Preview */}
       <Card shadow="sm" padding="md" radius="md" withBorder mb="xl">
         <Title order={4} className="mb-3">
           Available Variants
@@ -171,7 +169,6 @@ export default function IllustrationIconsPage() {
         </Card>
       )}
 
-      {/* Icon Detail Modal */}
       {selectedIcon && (
         <IconDetailModal
           opened={!!selectedIcon}

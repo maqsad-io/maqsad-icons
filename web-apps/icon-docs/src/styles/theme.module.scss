@@ -1,0 +1,45 @@
+.input {
+  transition: none;
+
+  border: 1px solid light-dark(
+                  var(--mantine-color-dark-filled),
+                  var(--mantine-color-skin-filled)
+  );
+
+  &:focus-within {
+    outline: 1px solid light-dark(
+                    var(--mantine-color-dark-filled),
+                    var(--mantine-color-skin-filled)
+    );
+    border-color: transparent;
+  }
+}
+
+.button {
+  &[data-disabled] {
+    background-color: var(--mantine-color-gray-3);
+    color: white;
+  }
+}
+
+.active {
+  transition: transform 50ms ease-in-out;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+//.focus {
+//  &:focus {
+//    outline: 2px solid var(--mantine-color-red-filled);
+//    outline-offset: 3px;
+//  }
+//}
+
+//.focus-auto {
+//  &:focus-visible {
+//    outline: 2px solid var(--mantine-color-red-filled);
+//    outline-offset: 2px;
+//  }
+//}

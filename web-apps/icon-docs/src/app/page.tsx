@@ -38,7 +38,7 @@ import {
 export default function HomePage() {
   return (
     <Container size="lg" py="xl">
-      {/* Hero Section */}
+
       <div className="text-center mb-12">
         <Badge size="lg" variant="light" mb="md" style={{ textTransform: "none" }}>
           v{AppMeta.dependencies["@maqsad/icons"].replace(/[^0-9.a-zA-Z-]/g, "")}
@@ -63,7 +63,7 @@ export default function HomePage() {
         </Group>
       </div>
 
-      {/* Icon Preview */}
+
       <Card shadow="sm" padding="lg" radius="md" withBorder mb="xl">
         <Title order={3} className="mb-4 text-center">
           Icon Preview
@@ -108,7 +108,7 @@ export default function HomePage() {
         </Group>
       </Card>
 
-      {/* Installation */}
+
       <Title order={2} className="mb-6">
         Installation
       </Title>
@@ -134,7 +134,7 @@ export default function HomePage() {
         </Tabs>
       </Card>
 
-      {/* Icon Categories */}
+
       <Title order={2} className="mb-6">
         Icon Categories
       </Title>
@@ -190,7 +190,7 @@ export default function HomePage() {
         </Card>
       </SimpleGrid>
 
-      {/* Quick Start */}
+
       <Title order={2} className="mb-6">
         Quick Start
       </Title>
@@ -256,7 +256,6 @@ function App() {
         />
       </Card>
 
-      {/* Props Tables */}
       <Title order={2} className="mb-6">
         Props Reference
       </Title>
@@ -336,7 +335,6 @@ function App() {
         </Card>
       </SimpleGrid>
 
-      {/* Features */}
       <Title order={2} className="mb-6">
         Features
       </Title>

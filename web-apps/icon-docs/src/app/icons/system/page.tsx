@@ -87,7 +87,6 @@ export default function SystemIconsPage() {
         />
       </Group>
 
-      {/* Usage Example */}
       <Card shadow="sm" padding="md" radius="md" withBorder mb="xl">
         <Title order={4} className="mb-3">
           Usage
@@ -106,7 +105,6 @@ export default function SystemIconsPage() {
 
       {totalCount > 0 ? (
         <>
-          {/* Stroke Icons Section */}
           {strokeIcons.length > 0 && (
             <div className="mb-8">
               <Group mb="md">
@@ -132,13 +130,15 @@ export default function SystemIconsPage() {
             </div>
           )}
 
-          {/* Filled Icons Section */}
           {filledIcons.length > 0 && (
             <div>
               <Group mb="md">
                 <Title order={3}>Filled Icons</Title>
                 <Badge variant="light" color="gray">
                   {filledIcons.length}
+                </Badge>
+                <Badge variant="light" color="red.5">
+                  Experimental
                 </Badge>
               </Group>
               <SimpleGrid cols={{ base: 2, xs: 3, sm: 4, md: 5, lg: 6 }} spacing="md">
@@ -164,7 +164,6 @@ export default function SystemIconsPage() {
         </Card>
       )}
 
-      {/* Icon Detail Modal */}
       {selectedIcon && (
         <IconDetailModal
           opened={!!selectedIcon}
