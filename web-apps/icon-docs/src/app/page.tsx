@@ -46,7 +46,7 @@ export default function HomePage() {
         <Title order={1} className="mb-4">
           Maqsad Icons
         </Title>
-        <Text size="xl" c="dimmed" maw={600} mx="auto" mb="lg">
+        <Text size="md" c="dimmed" maw={600} mx="auto" mb="lg">
           A beautiful, consistent icon library designed for Maqsad&apos;s products.
           Featuring both system icons and colorful illustrations.
         </Text>
