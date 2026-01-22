@@ -10,7 +10,7 @@ import * as IllustrationIcons from "@maqsad/icons/illustrations";
 import { IconCard } from "@/components/features/IconCard";
 import { IconDetailModal, type IconType } from "@/components/features/IconDetailModal";
 import { IconSearchBar } from "@/components/features/IconSearchBar";
-import { SYSTEM_ICONS, ILLUSTRATION_ICONS } from "@/data/icons";
+import { SYSTEM_ICONS, ILLUSTRATION_ICONS } from "@/constants/icons";
 import type { SystemIconProps, IllustrationIconProps, IllustrationVariant } from "@maqsad/icons";
 
 // Type definitions

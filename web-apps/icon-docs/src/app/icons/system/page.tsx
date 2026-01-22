@@ -17,7 +17,7 @@ import * as SystemIcons from "@maqsad/icons/system";
 import { IconCard } from "@/components/features/IconCard";
 import { IconDetailModal } from "@/components/features/IconDetailModal";
 import { IconSearchBar } from "@/components/features/IconSearchBar";
-import { SYSTEM_ICONS } from "@/data/icons";
+import { SYSTEM_ICONS } from "@/constants/icons";
 
 // Type for the icons module
 type IconComponent = React.ComponentType<{ size?: number; stroke?: string; fill?: string; strokeWidth?: number }>;

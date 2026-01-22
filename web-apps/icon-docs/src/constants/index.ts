@@ -7,3 +7,6 @@ export const NAV_LINKS = [
   { label: "System Icons", href: "/icons/system" },
   { label: "Illustrations", href: "/icons/illustrations" },
 ] as const;
+
+// Re-export icon constants
+export * from "./icons";

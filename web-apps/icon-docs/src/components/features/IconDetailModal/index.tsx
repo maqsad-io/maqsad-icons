@@ -21,7 +21,7 @@ import {
 import { CodeHighlight } from "@mantine/code-highlight";
 import { IconCheck, IconCopy, IconPalette } from "@tabler/icons-react";
 import { useState, type ReactNode } from "react";
-import { ILLUSTRATION_VARIANTS, type IllustrationVariant } from "@/data/icons";
+import { ILLUSTRATION_VARIANTS, type IllustrationVariant } from "@/constants/icons";
 
 export type IconType = "system" | "illustration";
 

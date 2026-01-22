@@ -17,7 +17,7 @@ import * as IllustrationIcons from "@maqsad/icons/illustrations";
 import { IconCard } from "@/components/features/IconCard";
 import { IconDetailModal } from "@/components/features/IconDetailModal";
 import { IconSearchBar } from "@/components/features/IconSearchBar";
-import { ILLUSTRATION_ICONS, ILLUSTRATION_VARIANTS, type IllustrationVariant } from "@/data/icons";
+import { ILLUSTRATION_ICONS, ILLUSTRATION_VARIANTS, type IllustrationVariant } from "@/constants/icons";
 
 // Type for the illustration icons module
 type IllustrationComponent = React.ComponentType<{
