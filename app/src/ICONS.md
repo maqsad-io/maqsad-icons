@@ -2,7 +2,7 @@
 
 This document lists all available icons in the `@maqsad/icons` library.
 
-## System Icons (90)
+## System Icons (85)
 
 System icons are available in two styles: **stroke** (outline) and **filled**. All icons can be scaled to any size using the `size` prop.
 
@@ -82,53 +82,48 @@ System icons are available in two styles: **stroke** (outline) and **filled**. A
   </tr>
 </table>
 
-### Filled Icons (35)
+### Filled Icons (30)
 
 <table>
   <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/alert-filled.svg" width="24" height="24" /><br /><sub>AlertFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/alert-circle-filled.svg" width="24" height="24" /><br /><sub>AlertCircleFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/badge-check-filled.svg" width="24" height="24" /><br /><sub>BadgeCheckFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/bell-filled.svg" width="24" height="24" /><br /><sub>BellFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/book-filled.svg" width="24" height="24" /><br /><sub>BookFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/bookmark-filled.svg" width="24" height="24" /><br /><sub>BookmarkFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/calculator-filled.svg" width="24" height="24" /><br /><sub>CalculatorFilled</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/calculator-filled-2.svg" width="24" height="24" /><br /><sub>CalculatorFilled2</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/calculator-filled-2.svg" width="24" height="24" /><br /><sub>CalculatorFilled2</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/camera-filled.svg" width="24" height="24" /><br /><sub>CameraFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/chat-filled.svg" width="24" height="24" /><br /><sub>ChatFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/chat-filled-1.svg" width="24" height="24" /><br /><sub>ChatFilled1</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/check-circle-filled.svg" width="24" height="24" /><br /><sub>CheckCircleFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/credit-card-filled.svg" width="24" height="24" /><br /><sub>CreditCardFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/crown-filled.svg" width="24" height="24" /><br /><sub>CrownFilled</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/delete-filled.svg" width="24" height="24" /><br /><sub>DeleteFilled</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/delete-filled.svg" width="24" height="24" /><br /><sub>DeleteFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/dislike-filled.svg" width="24" height="24" /><br /><sub>DislikeFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/edit-filled.svg" width="24" height="24" /><br /><sub>EditFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/envelope-filled.svg" width="24" height="24" /><br /><sub>EnvelopeFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/feedback-filled.svg" width="24" height="24" /><br /><sub>FeedbackFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/help-filled.svg" width="24" height="24" /><br /><sub>HelpFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/history-filled.svg" width="24" height="24" /><br /><sub>HistoryFilled</sub></td>
-  </tr>
-  <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/home-filled.svg" width="24" height="24" /><br /><sub>HomeFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/info-filled.svg" width="24" height="24" /><br /><sub>InfoFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/like-filled.svg" width="24" height="24" /><br /><sub>LikeFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/negative-circle-filled.svg" width="24" height="24" /><br /><sub>NegativeCircleFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/pin-filled.svg" width="24" height="24" /><br /><sub>PinFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/question-bank-filled.svg" width="24" height="24" /><br /><sub>QuestionBankFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/share-arrow-filled.svg" width="24" height="24" /><br /><sub>ShareArrowFilled</sub></td>
   </tr>
   <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/like-filled.svg" width="24" height="24" /><br /><sub>LikeFilled</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/negative-circle-filled.svg" width="24" height="24" /><br /><sub>NegativeCircleFilled</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/share-arrow-filled.svg" width="24" height="24" /><br /><sub>ShareArrowFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/sikkay-filled.svg" width="24" height="24" /><br /><sub>SikkayFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/smiley-filled.svg" width="24" height="24" /><br /><sub>SmileyFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/star-filled.svg" width="24" height="24" /><br /><sub>StarFilled</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/test-filled.svg" width="24" height="24" /><br /><sub>TestFilled</sub></td>
+  </tr>
+  <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/video-play-filled.svg" width="24" height="24" /><br /><sub>VideoPlayFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/video-skip-filled.svg" width="24" height="24" /><br /><sub>VideoSkipFilled</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/whatsapp.svg" width="24" height="24" /><br /><sub>Whatsapp</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/system/filled/whatsapp-filled.svg" width="24" height="24" /><br /><sub>WhatsappFilled</sub></td>
   </tr>
 </table>
 
@@ -138,7 +133,6 @@ System icons are available in two styles: **stroke** (outline) and **filled**. A
 | ---------------------- | -------------------------- | ---------------------------------------------------------- |
 | alert                  | `IconAlert`                | `import { IconAlert } from '@maqsad/icons'`                |
 | alert-circle           | `IconAlertCircle`          | `import { IconAlertCircle } from '@maqsad/icons'`          |
-| alert-circle-filled    | `IconAlertCircleFilled`    | `import { IconAlertCircleFilled } from '@maqsad/icons'`    |
 | alert-filled           | `IconAlertFilled`          | `import { IconAlertFilled } from '@maqsad/icons'`          |
 | arrow-back             | `IconArrowBack`            | `import { IconArrowBack } from '@maqsad/icons'`            |
 | arrow-forward          | `IconArrowForward`         | `import { IconArrowForward } from '@maqsad/icons'`         |
@@ -186,7 +180,6 @@ System icons are available in two styles: **stroke** (outline) and **filled**. A
 | help                   | `IconHelp`                 | `import { IconHelp } from '@maqsad/icons'`                 |
 | help-filled            | `IconHelpFilled`           | `import { IconHelpFilled } from '@maqsad/icons'`           |
 | history                | `IconHistory`              | `import { IconHistory } from '@maqsad/icons'`              |
-| history-filled         | `IconHistoryFilled`        | `import { IconHistoryFilled } from '@maqsad/icons'`        |
 | home                   | `IconHome`                 | `import { IconHome } from '@maqsad/icons'`                 |
 | home-filled            | `IconHomeFilled`           | `import { IconHomeFilled } from '@maqsad/icons'`           |
 | info                   | `IconInfo`                 | `import { IconInfo } from '@maqsad/icons'`                 |
@@ -202,9 +195,7 @@ System icons are available in two styles: **stroke** (outline) and **filled**. A
 | pencil-hand            | `IconPencilHand`           | `import { IconPencilHand } from '@maqsad/icons'`           |
 | physics                | `IconPhysics`              | `import { IconPhysics } from '@maqsad/icons'`              |
 | pin                    | `IconPin`                  | `import { IconPin } from '@maqsad/icons'`                  |
-| pin-filled             | `IconPinFilled`            | `import { IconPinFilled } from '@maqsad/icons'`            |
 | question-bank          | `IconQuestionBank`         | `import { IconQuestionBank } from '@maqsad/icons'`         |
-| question-bank-filled   | `IconQuestionBankFilled`   | `import { IconQuestionBankFilled } from '@maqsad/icons'`   |
 | reset                  | `IconReset`                | `import { IconReset } from '@maqsad/icons'`                |
 | rotate-screen          | `IconRotateScreen`         | `import { IconRotateScreen } from '@maqsad/icons'`         |
 | search                 | `IconSearch`               | `import { IconSearch } from '@maqsad/icons'`               |
@@ -223,13 +214,12 @@ System icons are available in two styles: **stroke** (outline) and **filled**. A
 | video-play             | `IconVideoPlay`            | `import { IconVideoPlay } from '@maqsad/icons'`            |
 | video-play-filled      | `IconVideoPlayFilled`      | `import { IconVideoPlayFilled } from '@maqsad/icons'`      |
 | video-skip             | `IconVideoSkip`            | `import { IconVideoSkip } from '@maqsad/icons'`            |
-| video-skip-filled      | `IconVideoSkipFilled`      | `import { IconVideoSkipFilled } from '@maqsad/icons'`      |
-| whatsapp               | `IconWhatsapp`             | `import { IconWhatsapp } from '@maqsad/icons'`             |
+| whatsapp-filled        | `IconWhatsappFilled`       | `import { IconWhatsappFilled } from '@maqsad/icons'`       |
 | wrench-gear            | `IconWrenchGear`           | `import { IconWrenchGear } from '@maqsad/icons'`           |
 
 ---
 
-## Illustration Icons (16)
+## Illustration Icons (45)
 
 Illustration icons are detailed, multi-color icons available in 5 variants: `primary`, `secondary`, `dark`, `light`, and `filled`.
 
@@ -238,48 +228,122 @@ Illustration icons are detailed, multi-color icons available in 5 variants: `pri
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/avatar-female-primary.svg" width="48" height="48" /><br /><sub>AvatarFemale</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/avatar-generic-primary.svg" width="48" height="48" /><br /><sub>AvatarGeneric</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/avatar-male-primary.svg" width="48" height="48" /><br /><sub>AvatarMale</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/badge-star-primary.svg" width="48" height="48" /><br /><sub>BadgeStar</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/book-open-primary.svg" width="48" height="48" /><br /><sub>BookOpen</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/crown-shine-primary.svg" width="48" height="48" /><br /><sub>CrownShine</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/doctor-female-primary.svg" width="48" height="48" /><br /><sub>DoctorFemale</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/doctor-syringe-primary.svg" width="48" height="48" /><br /><sub>DoctorSyringe</sub></td>
+  </tr>
+  <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/doubtsolve-primary.svg" width="48" height="48" /><br /><sub>Doubtsolve</sub></td>
-  </tr>
-  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/engineer-boy-primary.svg" width="48" height="48" /><br /><sub>EngineerBoy</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/gift-sikkay-primary.svg" width="48" height="48" /><br /><sub>GiftSikkay</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/giki-primary.svg" width="48" height="48" /><br /><sub>Giki</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/hero-sikka-primary.svg" width="48" height="48" /><br /><sub>HeroSikka</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/iba-primary.svg" width="48" height="48" /><br /><sub>Iba</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/limit-reached-hijab-primary.svg" width="48" height="48" /><br /><sub>LimitReachedHijab</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/live-sessions-primary.svg" width="48" height="48" /><br /><sub>LiveSessions</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/logo-maqsad.svg" width="48" height="48" /><br /><sub>LogoMaqsad</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/logo-maqsad-512-bg-white.svg" width="48" height="48" /><br /><sub>LogoMaqsad512BgWhite</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/logo-maqsad-primary.svg" width="48" height="48" /><br /><sub>LogoMaqsad</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/logo-maqsad-bg-white-primary.svg" width="48" height="48" /><br /><sub>LogoMaqsadBgWhite</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/lums-primary.svg" width="48" height="48" /><br /><sub>Lums</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-confused-primary.svg" width="48" height="48" /><br /><sub>MissHumaConfused</sub></td>
-    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/notes-primary.svg" width="48" height="48" /><br /><sub>Notes</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/maqsad-dots-primary.svg" width="48" height="48" /><br /><sub>MaqsadDots</sub></td>
   </tr>
   <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-confused-primary.svg" width="48" height="48" /><br /><sub>MissHumaConfused</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-crown-gold-primary.svg" width="48" height="48" /><br /><sub>MissHumaCrownGold</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-searching-primary.svg" width="48" height="48" /><br /><sub>MissHumaSearching</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-searching-small-primary.svg" width="48" height="48" /><br /><sub>MissHumaSearchingSmall</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-small-primary.svg" width="48" height="48" /><br /><sub>MissHumaSmall</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-star-primary.svg" width="48" height="48" /><br /><sub>MissHumaStar</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-thinking-primary.svg" width="48" height="48" /><br /><sub>MissHumaThinking</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/miss-huma-thinking-question-primary.svg" width="48" height="48" /><br /><sub>MissHumaThinkingQuestion</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/no-connection-girl-primary.svg" width="48" height="48" /><br /><sub>NoConnectionGirl</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/notes-primary.svg" width="48" height="48" /><br /><sub>Notes</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/notes-2-primary.svg" width="48" height="48" /><br /><sub>Notes2</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/padlock-open-primary.svg" width="48" height="48" /><br /><sub>PadlockOpen</sub></td>
+  </tr>
+  <tr>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/sikka-primary.svg" width="48" height="48" /><br /><sub>Sikka</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/sikkay-stacked-primary.svg" width="48" height="48" /><br /><sub>SikkayStacked</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/sikkay-stacked-sparkles-primary.svg" width="48" height="48" /><br /><sub>SikkayStackedSparkles</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/studying-boy-big-book-primary.svg" width="48" height="48" /><br /><sub>StudyingBoyBigBook</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/studying-boy-mobile-primary.svg" width="48" height="48" /><br /><sub>StudyingBoyMobile</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/studying-boy-phone-primary.svg" width="48" height="48" /><br /><sub>StudyingBoyPhone</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/studying-girl-laying-down-primary.svg" width="48" height="48" /><br /><sub>StudyingGirlLayingDown</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/studying-girl-table-primary.svg" width="48" height="48" /><br /><sub>StudyingGirlTable</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/tag-bookmark-premium-primary.svg" width="48" height="48" /><br /><sub>TagBookmarkPremium</sub></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/tag-pill-shine-premium-primary.svg" width="48" height="48" /><br /><sub>TagPillShinePremium</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/tests-primary.svg" width="48" height="48" /><br /><sub>Tests</sub></td>
     <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/video-lectures-primary.svg" width="48" height="48" /><br /><sub>VideoLectures</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/maqsad-io/maqsad-icons/main/app/assets/illustrations/primary/walking-girl-walkman-primary.svg" width="48" height="48" /><br /><sub>WalkingGirlWalkman</sub></td>
   </tr>
 </table>
 
 ### Import Reference
 
-| Icon Name                | Component                          | Import                                                             |
-| ------------------------ | ---------------------------------- | ------------------------------------------------------------------ |
-| avatar-female            | `IllustrationAvatarFemale`         | `import { IllustrationAvatarFemale } from '@maqsad/icons'`         |
-| avatar-generic           | `IllustrationAvatarGeneric`        | `import { IllustrationAvatarGeneric } from '@maqsad/icons'`        |
-| avatar-male              | `IllustrationAvatarMale`           | `import { IllustrationAvatarMale } from '@maqsad/icons'`           |
-| doubtsolve               | `IllustrationDoubtsolve`           | `import { IllustrationDoubtsolve } from '@maqsad/icons'`           |
-| giki                     | `IllustrationGiki`                 | `import { IllustrationGiki } from '@maqsad/icons'`                 |
-| iba                      | `IllustrationIba`                  | `import { IllustrationIba } from '@maqsad/icons'`                  |
-| live-sessions            | `IllustrationLiveSessions`         | `import { IllustrationLiveSessions } from '@maqsad/icons'`         |
-| logo-maqsad              | `IllustrationLogoMaqsad`           | `import { IllustrationLogoMaqsad } from '@maqsad/icons'`           |
-| logo-maqsad-512-bg-white | `IllustrationLogoMaqsad512BgWhite` | `import { IllustrationLogoMaqsad512BgWhite } from '@maqsad/icons'` |
-| lums                     | `IllustrationLums`                 | `import { IllustrationLums } from '@maqsad/icons'`                 |
-| miss-huma-confused       | `IllustrationMissHumaConfused`     | `import { IllustrationMissHumaConfused } from '@maqsad/icons'`     |
-| notes                    | `IllustrationNotes`                | `import { IllustrationNotes } from '@maqsad/icons'`                |
-| notes-2                  | `IllustrationNotes2`               | `import { IllustrationNotes2 } from '@maqsad/icons'`               |
-| sikka                    | `IllustrationSikka`                | `import { IllustrationSikka } from '@maqsad/icons'`                |
-| tests                    | `IllustrationTests`                | `import { IllustrationTests } from '@maqsad/icons'`                |
-| video-lectures           | `IllustrationVideoLectures`        | `import { IllustrationVideoLectures } from '@maqsad/icons'`        |
+| Icon Name                   | Component                              | Import                                                                 |
+| --------------------------- | -------------------------------------- | ---------------------------------------------------------------------- |
+| avatar-female               | `IllustrationAvatarFemale`             | `import { IllustrationAvatarFemale } from '@maqsad/icons'`             |
+| avatar-generic              | `IllustrationAvatarGeneric`            | `import { IllustrationAvatarGeneric } from '@maqsad/icons'`            |
+| avatar-male                 | `IllustrationAvatarMale`               | `import { IllustrationAvatarMale } from '@maqsad/icons'`               |
+| badge-star                  | `IllustrationBadgeStar`                | `import { IllustrationBadgeStar } from '@maqsad/icons'`                |
+| book-open                   | `IllustrationBookOpen`                 | `import { IllustrationBookOpen } from '@maqsad/icons'`                 |
+| crown-shine                 | `IllustrationCrownShine`               | `import { IllustrationCrownShine } from '@maqsad/icons'`               |
+| doctor-female               | `IllustrationDoctorFemale`             | `import { IllustrationDoctorFemale } from '@maqsad/icons'`             |
+| doctor-syringe              | `IllustrationDoctorSyringe`            | `import { IllustrationDoctorSyringe } from '@maqsad/icons'`            |
+| doubtsolve                  | `IllustrationDoubtsolve`               | `import { IllustrationDoubtsolve } from '@maqsad/icons'`               |
+| engineer-boy                | `IllustrationEngineerBoy`              | `import { IllustrationEngineerBoy } from '@maqsad/icons'`              |
+| gift-sikkay                 | `IllustrationGiftSikkay`               | `import { IllustrationGiftSikkay } from '@maqsad/icons'`               |
+| giki                        | `IllustrationGiki`                     | `import { IllustrationGiki } from '@maqsad/icons'`                     |
+| hero-sikka                  | `IllustrationHeroSikka`                | `import { IllustrationHeroSikka } from '@maqsad/icons'`                |
+| iba                         | `IllustrationIba`                      | `import { IllustrationIba } from '@maqsad/icons'`                      |
+| limit-reached-hijab         | `IllustrationLimitReachedHijab`        | `import { IllustrationLimitReachedHijab } from '@maqsad/icons'`        |
+| live-sessions               | `IllustrationLiveSessions`             | `import { IllustrationLiveSessions } from '@maqsad/icons'`             |
+| logo-maqsad                 | `IllustrationLogoMaqsad`               | `import { IllustrationLogoMaqsad } from '@maqsad/icons'`               |
+| logo-maqsad-bg-white        | `IllustrationLogoMaqsadBgWhite`        | `import { IllustrationLogoMaqsadBgWhite } from '@maqsad/icons'`        |
+| lums                        | `IllustrationLums`                     | `import { IllustrationLums } from '@maqsad/icons'`                     |
+| maqsad-dots                 | `IllustrationMaqsadDots`               | `import { IllustrationMaqsadDots } from '@maqsad/icons'`               |
+| miss-huma-confused          | `IllustrationMissHumaConfused`         | `import { IllustrationMissHumaConfused } from '@maqsad/icons'`         |
+| miss-huma-crown-gold        | `IllustrationMissHumaCrownGold`        | `import { IllustrationMissHumaCrownGold } from '@maqsad/icons'`        |
+| miss-huma-searching         | `IllustrationMissHumaSearching`        | `import { IllustrationMissHumaSearching } from '@maqsad/icons'`        |
+| miss-huma-searching-small   | `IllustrationMissHumaSearchingSmall`   | `import { IllustrationMissHumaSearchingSmall } from '@maqsad/icons'`   |
+| miss-huma-small             | `IllustrationMissHumaSmall`            | `import { IllustrationMissHumaSmall } from '@maqsad/icons'`            |
+| miss-huma-star              | `IllustrationMissHumaStar`             | `import { IllustrationMissHumaStar } from '@maqsad/icons'`             |
+| miss-huma-thinking          | `IllustrationMissHumaThinking`         | `import { IllustrationMissHumaThinking } from '@maqsad/icons'`         |
+| miss-huma-thinking-question | `IllustrationMissHumaThinkingQuestion` | `import { IllustrationMissHumaThinkingQuestion } from '@maqsad/icons'` |
+| no-connection-girl          | `IllustrationNoConnectionGirl`         | `import { IllustrationNoConnectionGirl } from '@maqsad/icons'`         |
+| notes                       | `IllustrationNotes`                    | `import { IllustrationNotes } from '@maqsad/icons'`                    |
+| notes-2                     | `IllustrationNotes2`                   | `import { IllustrationNotes2 } from '@maqsad/icons'`                   |
+| padlock-open                | `IllustrationPadlockOpen`              | `import { IllustrationPadlockOpen } from '@maqsad/icons'`              |
+| sikka                       | `IllustrationSikka`                    | `import { IllustrationSikka } from '@maqsad/icons'`                    |
+| sikkay-stacked              | `IllustrationSikkayStacked`            | `import { IllustrationSikkayStacked } from '@maqsad/icons'`            |
+| sikkay-stacked-sparkles     | `IllustrationSikkayStackedSparkles`    | `import { IllustrationSikkayStackedSparkles } from '@maqsad/icons'`    |
+| studying-boy-big-book       | `IllustrationStudyingBoyBigBook`       | `import { IllustrationStudyingBoyBigBook } from '@maqsad/icons'`       |
+| studying-boy-mobile         | `IllustrationStudyingBoyMobile`        | `import { IllustrationStudyingBoyMobile } from '@maqsad/icons'`        |
+| studying-boy-phone          | `IllustrationStudyingBoyPhone`         | `import { IllustrationStudyingBoyPhone } from '@maqsad/icons'`         |
+| studying-girl-laying-down   | `IllustrationStudyingGirlLayingDown`   | `import { IllustrationStudyingGirlLayingDown } from '@maqsad/icons'`   |
+| studying-girl-table         | `IllustrationStudyingGirlTable`        | `import { IllustrationStudyingGirlTable } from '@maqsad/icons'`        |
+| tag-bookmark-premium        | `IllustrationTagBookmarkPremium`       | `import { IllustrationTagBookmarkPremium } from '@maqsad/icons'`       |
+| tag-pill-shine-premium      | `IllustrationTagPillShinePremium`      | `import { IllustrationTagPillShinePremium } from '@maqsad/icons'`      |
+| tests                       | `IllustrationTests`                    | `import { IllustrationTests } from '@maqsad/icons'`                    |
+| video-lectures              | `IllustrationVideoLectures`            | `import { IllustrationVideoLectures } from '@maqsad/icons'`            |
+| walking-girl-walkman        | `IllustrationWalkingGirlWalkman`       | `import { IllustrationWalkingGirlWalkman } from '@maqsad/icons'`       |
 
 ### Illustration Variants
 
@@ -299,9 +363,9 @@ Each illustration icon supports the following variants:
 
 | Category           | Count   |
 | ------------------ | ------- |
-| System Icons       | 90      |
-| Illustration Icons | 16      |
-| **Total Icons**    | **106** |
+| System Icons       | 85      |
+| Illustration Icons | 45      |
+| **Total Icons**    | **130** |
 
 ---
 
