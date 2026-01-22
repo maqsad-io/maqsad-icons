@@ -1,7 +1,7 @@
 # Maqsad Icons
 
 <p align="center">
-  <img src="./app/assets/illustrations/primary/logo-maqsad-512-bg-white.svg" width="120" height="120" alt="Maqsad Icons" />
+  <img src="./app/assets/illustrations/primary/logo-maqsad-bg-white-primary.svg" width="120" height="120" alt="Maqsad Icons" />
 </p>
 
 <p align="center">
